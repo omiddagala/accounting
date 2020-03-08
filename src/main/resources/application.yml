@@ -20,7 +20,7 @@ spring:
           lob:
             non_contextual_creation: true
   datasource:
-    url: jdbc:postgresql://postgres/accounting
+    url: jdbc:postgresql://127.0.0.1/accounting
     username: postgres
     password: 123456
     driverClassName: org.postgresql.Driver
