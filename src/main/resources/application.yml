@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: sandogh
+  profiles:
+    active: native
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+  boot:
+    admin:
+      client:
+        url: http://localhost:9999
+        username: admin
+        password: admin
+  jpa:
+    hibernate.ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  datasource:
+    url: jdbc:postgresql://postgres/accounting
+    username: postgres
+    password: 123456
+    driverClassName: org.postgresql.Driver
+
+server:
+  port: 9000
+
+
+
+
+
+
+
+
+
+
+
+
+
