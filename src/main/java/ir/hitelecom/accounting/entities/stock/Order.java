@@ -6,7 +6,7 @@ import ir.hitelecom.accounting.entities.stock.Reservoir;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "order")
+@Table(name = "product_order")
 public class Order {
     @Id
     @GeneratedValue
