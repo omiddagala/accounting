@@ -5,7 +5,16 @@ import java.util.Map;
 
 public enum Role {
     //**_RO(XX)LE_**
-    SHXXOP_ADXXMIN("ROLE_SHXXOP_ADXXMIN", "Boba_Fett");
+    SHXXOP_ADXXMIN("ROLE_SHXXOP_ADXXMIN", "Boba_Fett"),   //modire kol
+    STOCK_MANAGER("STOCK_MANAGER", "STOCK_MANAGER"),       //modire anbar
+    STOCK_EMPLOYEE("STOCK_EMPLOYEE", "STOCK_EMPLOYEE"),     //anbardar
+    CASHIER("CASHIER", "CASHIER"),              //sandoghdar
+    INTERNAL_MANAGER("INTERNAL_MANAGER", "INTERNAL_MANAGER"),  //modire dakheli
+    ADMIN("ADMIN", "ADMIN"),         //admin
+    TRANSFER("TRANSFER", "TRANSFER"),     //haml o naghl
+    ACCOUNTANT("ACCOUNTANT", "ACCOUNTANT"),  //hesabdar
+    AUDITOR("AUDITOR", "AUDITOR"),  //hesabres
+    SELLER("SELLER", "SELLER"); //foroshande
 
     private final String server;
     private final String client;

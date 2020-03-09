@@ -11,4 +11,6 @@ public interface SizeRepository extends CrudRepository<Size,Long> {
 
     @Query(value = "from Size s where (:svalue = null or s.value like %:svalue%)")
     List<Size> search(@Param("svalue") String value);
+
+    boolean existsByValue(String value);
 }

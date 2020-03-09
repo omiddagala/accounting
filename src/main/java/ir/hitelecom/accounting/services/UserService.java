@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.SecureRandom;
+import java.util.List;
 
 @Service
 @Transactional
@@ -135,5 +136,27 @@ public class UserService extends BaseService {
         for (int i = 0; i < len; i++)
             sb.append(AB.charAt(rnd.nextInt(AB.length())));
         return sb.toString();
+    }
+
+    public List<User> fetchShopUsers() {
+        User user = userRepository.findByUsername(getLoggedInUsername());
+        return userRepository.findByParent(user.getParent());
+    }
+
+    public void createShopUser(User user) {
+        user.setPlain(user.getPassword());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(Role.findServerRole(user.getRole()));
+        try {
+            userRepository.saveAndFlush(user);
+            User parent = userRepository.findByUsername(getLoggedInUsername());
+            user.setParent(parent);
+        } catch (Exception e) {
+            if (e.getCause().getCause().toString().contains("Detail: Key (mobile)=("))
+                throw new RuntimeException(getErrorMessage("foundMobile"));
+            else if (e.getCause().getCause().toString().contains("Detail: Key (username)=("))
+                throw new RuntimeException(getErrorMessage("foundUsername"));
+            throw e;
+        }
     }
 }
