@@ -25,6 +25,9 @@ public class User implements UserDetails {
     private String name;
     private String family;
     private String mobile;
+    @ManyToOne
+    @JsonIgnore
+    private User parent;
     // recoveryCode / recoveryCodeCounter / tokenCode / tokenCodeCounter
     @JsonIgnore
     private String recoveryField;
@@ -132,6 +135,14 @@ public class User implements UserDetails {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public User getParent() {
+        return parent;
+    }
+
+    public void setParent(User parent) {
+        this.parent = parent;
     }
 
     public List<String> convertServerRolesToClient() {

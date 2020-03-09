@@ -1,5 +1,7 @@
 package ir.hitelecom.accounting.entities.stock;
 
+import ir.hitelecom.accounting.entities.User;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -15,8 +17,11 @@ public class Product {
     private String type;
     private String image;
     private Date expireDate;
+    private Long price;
     @ManyToOne
-    Reservoir reservoir;
+    private User owner;
+    @ManyToOne
+    private Reservoir reservoir;
     @Transient
     private List<ProductSize> productSizes;
 
@@ -66,6 +71,22 @@ public class Product {
 
     public void setExpireDate(Date expireDate) {
         this.expireDate = expireDate;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     public Reservoir getReservoir() {
