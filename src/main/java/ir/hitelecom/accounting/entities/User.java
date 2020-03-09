@@ -2,6 +2,7 @@ package ir.hitelecom.accounting.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import ir.hitelecom.accounting.dto.UserDTO;
+import ir.hitelecom.accounting.entities.stock.Reservoir;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,6 +29,8 @@ public class User implements UserDetails {
     @ManyToOne
     @JsonIgnore
     private User parent;
+    @ManyToOne
+    private Reservoir reservoir;
     // recoveryCode / recoveryCodeCounter / tokenCode / tokenCodeCounter
     @JsonIgnore
     private String recoveryField;
@@ -143,6 +146,14 @@ public class User implements UserDetails {
 
     public void setParent(User parent) {
         this.parent = parent;
+    }
+
+    public Reservoir getReservoir() {
+        return reservoir;
+    }
+
+    public void setReservoir(Reservoir reservoir) {
+        this.reservoir = reservoir;
     }
 
     public List<String> convertServerRolesToClient() {
