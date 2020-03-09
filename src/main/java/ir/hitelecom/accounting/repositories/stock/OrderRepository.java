@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface OrderRepository extends CrudRepository<Order,Long> {
 
-    List<Order> findBySourceAndSeen(Reservoir reservoir, boolean seen);
+    List<Order> findBySourceAndClosed(Reservoir reservoir, boolean seen);
 }

@@ -30,7 +30,7 @@ public class OrderService extends BaseService {
 
     public List<Order> fetchOrdersForCurrentUser() {
         User user = userRepository.findByUsername(getLoggedInUsername());
-        return orderRepository.findBySourceAndSeen(user.getReservoir(), false);
+        return orderRepository.findBySourceAndClosed(user.getReservoir(), false);
     }
 
     public void close(Long id) {
