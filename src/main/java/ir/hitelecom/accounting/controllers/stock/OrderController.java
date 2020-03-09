@@ -25,4 +25,10 @@ public class OrderController {
     public List<Order> fetch() {
         return orderService.fetchOrdersForCurrentUser();
     }
+
+    @PostMapping("/close")
+    @ResponseBody
+    public void close(@RequestBody Order order) {
+        orderService.close(order.getId());
+    }
 }

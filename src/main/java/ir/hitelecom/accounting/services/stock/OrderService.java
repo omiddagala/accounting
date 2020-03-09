@@ -5,11 +5,13 @@ import ir.hitelecom.accounting.entities.stock.Order;
 import ir.hitelecom.accounting.repositories.UserRepository;
 import ir.hitelecom.accounting.repositories.stock.OrderRepository;
 import ir.hitelecom.accounting.services.BaseService;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -29,6 +31,15 @@ public class OrderService extends BaseService {
     public List<Order> fetchOrdersForCurrentUser() {
         User user = userRepository.findByUsername(getLoggedInUsername());
         return orderRepository.findBySourceAndSeen(user.getReservoir(), false);
+    }
+
+    public void close(Long id) {
+        Optional<Order> o = orderRepository.findById(id);
+        Order order;
+        if (o.isPresent()) {
+            order = o.get();
+            order.setClosed(true);
+        }
     }
 
 }

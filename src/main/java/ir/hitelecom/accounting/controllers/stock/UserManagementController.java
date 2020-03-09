@@ -20,10 +20,16 @@ public class UserManagementController {
         return userService.fetchShopUsers();
     }
 
-    @PostMapping("/create")
+    @PostMapping("/saveOrUpdate")
     @ResponseBody
     public void create(@RequestBody User user) {
         userService.createShopUser(user);
+    }
+
+    @PostMapping("/delete")
+    @ResponseBody
+    public void delete(@RequestBody User user) {
+        userService.delete(user);
     }
 
 }

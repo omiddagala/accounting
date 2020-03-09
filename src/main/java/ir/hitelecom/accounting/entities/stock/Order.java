@@ -20,7 +20,7 @@ public class Order {
     @ManyToOne
     private Product product;
     private Long count;
-    private boolean seen;
+    private boolean closed;
 
     public Long getId() {
         return id;
@@ -70,11 +70,11 @@ public class Order {
         this.count = count;
     }
 
-    public boolean isSeen() {
-        return seen;
+    public boolean isClosed() {
+        return closed;
     }
 
-    public void setSeen(boolean seen) {
-        this.seen = seen;
+    public void setClosed(boolean closed) {
+        this.closed = closed;
     }
 }

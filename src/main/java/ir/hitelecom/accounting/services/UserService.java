@@ -159,4 +159,8 @@ public class UserService extends BaseService {
             throw e;
         }
     }
+
+    public void delete(User user) {
+        userRepository.delete(user);
+    }
 }
