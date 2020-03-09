@@ -1,7 +1,6 @@
 package ir.hitelecom.accounting.controllers.stock;
 
 import ir.hitelecom.accounting.entities.stock.Order;
-import ir.hitelecom.accounting.entities.stock.Product;
 import ir.hitelecom.accounting.services.stock.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
