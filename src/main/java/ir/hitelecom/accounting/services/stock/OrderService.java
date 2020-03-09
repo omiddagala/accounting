@@ -28,7 +28,7 @@ public class OrderService extends BaseService {
 
     public List<Order> fetchOrdersForCurrentUser() {
         User user = userRepository.findByUsername(getLoggedInUsername());
-        return orderRepository.findBySourceAAndSeen(user.getReservoir(), false);
+        return orderRepository.findBySourceAndSeen(user.getReservoir(), false);
     }
 
 }

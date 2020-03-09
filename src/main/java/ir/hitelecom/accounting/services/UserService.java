@@ -26,13 +26,12 @@ public class UserService extends BaseService {
     private static final int recoveryTokenLength = 8;
 
     public void register(User user) {
-        User parent = userRepository.findByUsername(getLoggedInUsername());
-        user.setParent(parent);
         user.setPlain(user.getPassword());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.SHXXOP_ADXXMIN.getServer());
         try {
-            userRepository.saveAndFlush(user);
+            User parent = userRepository.saveAndFlush(user);
+            user.setParent(parent);
         } catch (Exception e) {
             if (e.getCause().getCause().toString().contains("Detail: Key (mobile)=("))
                 throw new RuntimeException(getErrorMessage("foundMobile"));
