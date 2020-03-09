@@ -17,6 +17,8 @@ public class Order {
     private Reservoir destination;
     @ManyToOne
     private User submitter;
+    @ManyToOne
+    private Product product;
     private Long count;
     private boolean seen;
 
@@ -50,6 +52,14 @@ public class Order {
 
     public void setSubmitter(User submitter) {
         this.submitter = submitter;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Long getCount() {
