@@ -24,7 +24,7 @@ public class ResourceServerSecurityConfig extends ResourceServerConfigurerAdapte
         http/*.
                  anonymous().disable()*/
                 .authorizeRequests()
-                .antMatchers("/**/shop/**").hasAuthority(Role.SHXXOP_ADXXMIN.getServer())
+                .antMatchers("/**/shop/**").authenticated()
                 .antMatchers("/**/user/authenticated/**").permitAll()
                 .antMatchers("/**/user/anonymous/**").anonymous()
                 .anyRequest().denyAll()
