@@ -21,6 +21,7 @@ public class GroupService extends BaseService {
     }
 
     public Group saveOrUpdate(Group group) {
+        group.setUsername(getLoggedInUsername());
         return groupRepository.save(group);
     }
 
