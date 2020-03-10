@@ -53,7 +53,7 @@ public class OrderService extends BaseService {
             fetchedOrder.setClosed(true);
             order.getListOrders().forEach(ord -> {
                 ProductSize source = productSizeRepository.findByProductReservoirAndProductNameAndSizeId(fetchedOrder.getSource(), fetchedOrder.getProduct().getName(), ord.getId());
-                source.setCount(new Long(source.getCount() - Long.valueOf(ord.getValue())).intValue());
+                source.setCount(new Long(source.getCount() == null ? 0 : source.getCount() - Long.valueOf(ord.getValue())).intValue());
                 ProductSize destination = productSizeRepository.findByProductReservoirAndProductNameAndSizeId(fetchedOrder.getDestination(), fetchedOrder.getProduct().getName(), ord.getId());
                 if (destination == null) {
                     Product destinationProduct = productRepository.findByReservoirAndName(fetchedOrder.getDestination(), fetchedOrder.getProduct().getName());
@@ -79,7 +79,7 @@ public class OrderService extends BaseService {
                     }
 
                 } else {
-                    destination.setCount(new Long(destination.getCount() + Long.valueOf(ord.getValue())).intValue());
+                    destination.setCount(new Long(destination.getCount() == null ? 0 : destination.getCount() + Long.valueOf(ord.getValue())).intValue());
                 }
             });
         }
