@@ -1,5 +1,6 @@
 package ir.hitelecom.accounting.entities.stock;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import ir.hitelecom.accounting.entities.User;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class Product {
     private Date expireDate;
     private Long price;
     @ManyToOne
+    @JsonIgnore
     private User owner;
     @ManyToOne
     private Reservoir reservoir;
