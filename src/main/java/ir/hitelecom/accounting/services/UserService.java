@@ -145,19 +145,29 @@ public class UserService extends BaseService {
     }
 
     public void createShopUser(User user) {
-        user.setPlain(user.getPassword());
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole(Role.findServerRole(user.getRole()));
-        try {
-            userRepository.saveAndFlush(user);
-            User parent = userRepository.findByUsername(getLoggedInUsername());
-            user.setParent(parent);
-        } catch (Exception e) {
-            if (e.getCause().getCause().toString().contains("Detail: Key (mobile)=("))
-                throw new RuntimeException(getErrorMessage("foundMobile"));
-            else if (e.getCause().getCause().toString().contains("Detail: Key (username)=("))
-                throw new RuntimeException(getErrorMessage("foundUsername"));
-            throw e;
+        User existedUser = userRepository.findByUsername(user.getUsername());
+        if (existedUser == null) {
+            user.setPlain(user.getPassword());
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setRole(Role.findServerRole(user.getRole()));
+            try {
+                userRepository.saveAndFlush(user);
+                User parent = userRepository.findByUsername(getLoggedInUsername());
+                user.setParent(parent);
+            } catch (Exception e) {
+                if (e.getCause().getCause().toString().contains("Detail: Key (mobile)=("))
+                    throw new RuntimeException(getErrorMessage("foundMobile"));
+                else if (e.getCause().getCause().toString().contains("Detail: Key (username)=("))
+                    throw new RuntimeException(getErrorMessage("foundUsername"));
+                throw e;
+            }
+        } else {
+            existedUser.setName(user.getName());
+            existedUser.setFamily(user.getFamily());
+            existedUser.setMobile(user.getMobile());
+            existedUser.setRole(Role.findServerRole(user.getRole()));
+            existedUser.setReservoir(user.getReservoir());
+            userRepository.save(existedUser);
         }
     }
 
