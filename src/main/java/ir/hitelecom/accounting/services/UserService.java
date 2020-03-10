@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.security.SecureRandom;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -162,5 +163,10 @@ public class UserService extends BaseService {
 
     public void delete(User user) {
         userRepository.delete(user);
+    }
+
+    public User findOne(User user) {
+        Optional<User> optional = userRepository.findById(user.getId());
+        return optional.orElse(null);
     }
 }

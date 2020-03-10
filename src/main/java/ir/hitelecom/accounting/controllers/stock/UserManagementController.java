@@ -32,4 +32,10 @@ public class UserManagementController {
         userService.delete(user);
     }
 
+    @PostMapping("/findOne")
+    @ResponseBody
+    public User findOne(@RequestBody User user) {
+        return userService.findOne(user);
+    }
+
 }
