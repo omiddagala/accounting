@@ -2,8 +2,12 @@ package ir.hitelecom.accounting.services.stock;
 
 import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.stock.Order;
+import ir.hitelecom.accounting.entities.stock.Product;
+import ir.hitelecom.accounting.entities.stock.ProductSize;
 import ir.hitelecom.accounting.repositories.UserRepository;
 import ir.hitelecom.accounting.repositories.stock.OrderRepository;
+import ir.hitelecom.accounting.repositories.stock.ProductRepository;
+import ir.hitelecom.accounting.repositories.stock.ProductSizeRepository;
 import ir.hitelecom.accounting.services.BaseService;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +25,10 @@ public class OrderService extends BaseService {
     private OrderRepository orderRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ProductSizeRepository productSizeRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
     public void submit(Order order) {
         User user = userRepository.findByUsername(getLoggedInUsername());
@@ -34,11 +42,46 @@ public class OrderService extends BaseService {
     }
 
     public void close(Long id) {
-        Optional<Order> o = orderRepository.findById(id);
-        Order order;
+        orderRepository.deleteById(id);
+    }
+
+    public void approve(Order order) {
+        Optional<Order> o = orderRepository.findById(order.getId());
+        Order fetchedOrder;
         if (o.isPresent()) {
-            order = o.get();
-            order.setClosed(true);
+            fetchedOrder = o.get();
+            fetchedOrder.setClosed(true);
+            order.getListOrders().forEach(ord -> {
+                ProductSize source = productSizeRepository.findByProductReservoirAndProductNameAndSizeId(fetchedOrder.getSource(), fetchedOrder.getProduct().getName(), ord.getId());
+                source.setCount(new Long(source.getCount() - Long.valueOf(ord.getValue())).intValue());
+                ProductSize destination = productSizeRepository.findByProductReservoirAndProductNameAndSizeId(fetchedOrder.getDestination(), fetchedOrder.getProduct().getName(), ord.getId());
+                if (destination == null) {
+                    Product destinationProduct = productRepository.findByReservoirAndName(fetchedOrder.getDestination(), fetchedOrder.getProduct().getName());
+                    if (destinationProduct == null) {
+                        Optional<Product> op = productRepository.findById(fetchedOrder.getProduct().getId());
+                        if (op.isPresent()) {
+                            Product product = op.get();
+                            Product newProduct = product.clone();
+                            newProduct.setReservoir(fetchedOrder.getDestination());
+                            Product savedProduct = productRepository.save(newProduct);
+                            ProductSize newProductSize = new ProductSize();
+                            newProductSize.setCount(Integer.valueOf(ord.getValue()));
+                            newProductSize.setProduct(savedProduct);
+                            newProductSize.setSize(source.getSize());
+                            productSizeRepository.save(newProductSize);
+                        }
+                    } else {
+                        ProductSize newProductSize = new ProductSize();
+                        newProductSize.setCount(Integer.valueOf(ord.getValue()));
+                        newProductSize.setProduct(destinationProduct);
+                        newProductSize.setSize(source.getSize());
+                        productSizeRepository.save(newProductSize);
+                    }
+
+                } else {
+                    destination.setCount(new Long(destination.getCount() + Long.valueOf(ord.getValue())).intValue());
+                }
+            });
         }
     }
 

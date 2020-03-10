@@ -116,4 +116,18 @@ public class Product {
     public void setProductSizes(List<ProductSize> productSizes) {
         this.productSizes = productSizes;
     }
+
+    public Product clone() {
+        Product product = new Product();
+        product.setName(this.getName());
+        product.setOwner(this.getOwner());
+        product.setType(this.getType());
+        product.setDescription(this.getDescription());
+        product.setExpireDate(this.getExpireDate());
+        product.setGroup(this.getGroup());
+        product.setImage(this.image);
+        product.setPrice(this.getPrice());
+        product.setReservoir(this.getReservoir());
+        return product;
+    }
 }

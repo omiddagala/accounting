@@ -31,4 +31,10 @@ public class OrderController {
     public void close(@RequestBody Order order) {
         orderService.close(order.getId());
     }
+
+    @PostMapping("/approve")
+    @ResponseBody
+    public void approve(@RequestBody Order order) {
+        orderService.approve(order);
+    }
 }

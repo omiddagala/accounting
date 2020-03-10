@@ -4,6 +4,7 @@ import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.stock.Reservoir;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "product_order")
@@ -19,7 +20,9 @@ public class Order {
     private User submitter;
     @ManyToOne
     private Product product;
-    private Long count;
+    private String orders;
+    @Transient
+    private List<Size> listOrders;
     private boolean closed;
 
     public Long getId() {
@@ -62,12 +65,20 @@ public class Order {
         this.product = product;
     }
 
-    public Long getCount() {
-        return count;
+    public String getOrders() {
+        return orders;
     }
 
-    public void setCount(Long count) {
-        this.count = count;
+    public void setOrders(String orders) {
+        this.orders = orders;
+    }
+
+    public List<Size> getListOrders() {
+        return listOrders;
+    }
+
+    public void setListOrders(List<Size> listOrders) {
+        this.listOrders = listOrders;
     }
 
     public boolean isClosed() {
