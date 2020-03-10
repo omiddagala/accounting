@@ -22,6 +22,8 @@ public class Product {
     private User owner;
     @ManyToOne
     private Reservoir reservoir;
+    @ManyToOne
+    private Group group;
     @Transient
     private List<ProductSize> productSizes;
 
@@ -95,6 +97,14 @@ public class Product {
 
     public void setReservoir(Reservoir reservoir) {
         this.reservoir = reservoir;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     public List<ProductSize> getProductSizes() {
