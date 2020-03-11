@@ -3,6 +3,7 @@ package ir.hitelecom.accounting.services.stock;
 import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.stock.Product;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
+import ir.hitelecom.accounting.entities.stock.Reservoir;
 import ir.hitelecom.accounting.entities.stock.Size;
 import ir.hitelecom.accounting.repositories.stock.ProductSizeRepository;
 import ir.hitelecom.accounting.services.BaseService;
@@ -29,6 +30,11 @@ public class ProductSizeService extends BaseService {
         list.forEach(elem -> {
             ProductSize productSize = new ProductSize();
             productSize.setId(elem[3] == null ? null : ((BigInteger) elem[3]).longValue());
+            Product product = new Product();
+            Reservoir reservoir = new Reservoir();
+            reservoir.setName((String) elem[4]);
+            product.setReservoir(reservoir);
+            productSize.setProduct(product);
             Size size = new Size();
             size.setId(((BigInteger) elem[0]).longValue());
             size.setValue((String) elem[1]);

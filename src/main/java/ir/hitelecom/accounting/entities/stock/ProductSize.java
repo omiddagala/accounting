@@ -11,7 +11,6 @@ public class ProductSize {
     @GeneratedValue
     private Long id;
     @ManyToOne
-    @JsonIgnore
     private Product product;
     @ManyToOne
     private Size size;
