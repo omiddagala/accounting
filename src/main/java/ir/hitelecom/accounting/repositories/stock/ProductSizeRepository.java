@@ -1,5 +1,6 @@
 package ir.hitelecom.accounting.repositories.stock;
 
+import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.stock.Product;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
 import ir.hitelecom.accounting.entities.stock.Reservoir;
@@ -17,4 +18,6 @@ public interface ProductSizeRepository extends CrudRepository<ProductSize,Long> 
     void deleteByProduct(Product product);
 
     ProductSize findByProductReservoirAndProductNameAndSizeId(Reservoir reservoir, String name, Long id);
+
+    List<ProductSize> findProductByProductNameAndProductOwner(String name, User owner);
 }

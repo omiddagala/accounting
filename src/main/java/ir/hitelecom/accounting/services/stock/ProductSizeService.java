@@ -1,5 +1,6 @@
 package ir.hitelecom.accounting.services.stock;
 
+import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.stock.Product;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
 import ir.hitelecom.accounting.entities.stock.Size;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -42,5 +44,13 @@ public class ProductSizeService extends BaseService {
 
     public void save(ProductSize productSize) {
         productSizeRepository.save(productSize);
+    }
+
+    public Optional<ProductSize> findById(Long id) {
+        return productSizeRepository.findById(id);
+    }
+
+    public List<ProductSize> findProductByProductNameAndProductOwner(String name, User owner) {
+        return productSizeRepository.findProductByProductNameAndProductOwner(name, owner);
     }
 }

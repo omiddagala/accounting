@@ -51,7 +51,7 @@ public class ProductController {
 
     @PostMapping("/search")
     @ResponseBody
-    public List<Product> search(@RequestBody Product product) {
-         return productService.search(product);
+    public List<Product> search(@RequestBody ProductSize dto) {
+         return productService.search(dto);
     }
 }

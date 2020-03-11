@@ -2,6 +2,7 @@ package ir.hitelecom.accounting.services.stock;
 
 import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.stock.Product;
+import ir.hitelecom.accounting.entities.stock.ProductSize;
 import ir.hitelecom.accounting.repositories.UserRepository;
 import ir.hitelecom.accounting.repositories.stock.ProductRepository;
 import ir.hitelecom.accounting.repositories.stock.ProductSizeRepository;
@@ -58,12 +59,16 @@ public class ProductService extends BaseService {
         productRepository.delete(product);
     }
 
-    public List<Product> search(Product product) {
-        Optional<Product> o = productRepository.findById(product.getId());
+    public List<Product> search(ProductSize dto) {
+        List<Product> result = new ArrayList<>();
+        Optional<ProductSize> o = productSizeService.findById(dto.getId());
         if (o.isPresent()) {
-            Product p = o.get();
-            return productRepository.findByName(p.getName());
+            ProductSize p = o.get();
+            List<ProductSize> productSizes = productSizeService.findProductByProductNameAndProductOwner(p.getProduct().getName(), p.getProduct().getOwner());
+            productSizes.forEach(productSize -> {
+                result.add(productSize.getProduct());
+            });
         }
-        return new ArrayList<>();
+        return result;
     }
 }
