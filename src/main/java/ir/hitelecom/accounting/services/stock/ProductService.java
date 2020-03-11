@@ -59,15 +59,12 @@ public class ProductService extends BaseService {
         productRepository.delete(product);
     }
 
-    public List<Product> search(ProductSize dto) {
-        List<Product> result = new ArrayList<>();
+    public List<ProductSize> search(ProductSize dto) {
+        List<ProductSize> result = new ArrayList<>();
         Optional<ProductSize> o = productSizeService.findById(dto.getId());
         if (o.isPresent()) {
             ProductSize p = o.get();
-            List<ProductSize> productSizes = productSizeService.findProductByProductNameAndProductOwner(p.getProduct().getName(), p.getProduct().getOwner());
-            productSizes.forEach(productSize -> {
-                result.add(productSize.getProduct());
-            });
+            return productSizeService.findProductByProductNameAndProductOwner(p.getProduct().getName(), p.getProduct().getOwner());
         }
         return result;
     }
