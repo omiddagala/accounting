@@ -48,4 +48,10 @@ public class ProductController {
     public void delete(@RequestBody Product product) {
          productService.delete(product);
     }
+
+    @PostMapping("/search")
+    @ResponseBody
+    public List<Product> search(@RequestBody Product product) {
+         return productService.search(product);
+    }
 }

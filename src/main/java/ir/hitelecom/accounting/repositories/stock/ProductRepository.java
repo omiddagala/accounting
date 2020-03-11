@@ -14,4 +14,6 @@ public interface ProductRepository extends CrudRepository<Product,Long> {
     List<Product> search(@Param("name") String name, @Param("ptype") String type, @Param("owner")User owner);
 
     Product findByReservoirAndName(Reservoir reservoir, String name);
+
+    List<Product> findByName(String name);
 }

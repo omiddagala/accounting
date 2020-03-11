@@ -57,4 +57,13 @@ public class ProductService extends BaseService {
         productSizeService.deleteByProduct(product);
         productRepository.delete(product);
     }
+
+    public List<Product> search(Product product) {
+        Optional<Product> o = productRepository.findById(product.getId());
+        if (o.isPresent()) {
+            Product p = o.get();
+            return productRepository.findByName(p.getName());
+        }
+        return new ArrayList<>();
+    }
 }
