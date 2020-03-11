@@ -33,6 +33,7 @@ public class ProductSizeService extends BaseService {
             Product product = new Product();
             product.setId(elem[5] == null ? null : ((BigInteger) elem[3]).longValue());
             Reservoir reservoir = new Reservoir();
+            reservoir.setId(elem[6] == null ? null : ((BigInteger) elem[3]).longValue());
             reservoir.setName((String) elem[4]);
             product.setReservoir(reservoir);
             productSize.setProduct(product);
