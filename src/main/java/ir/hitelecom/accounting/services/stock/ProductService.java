@@ -12,9 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -60,12 +62,15 @@ public class ProductService extends BaseService {
     }
 
     public List<ProductSize> search(ProductSize dto) {
-        List<ProductSize> result = new ArrayList<>();
+        Map<Long, ProductSize> result = new HashMap<>();
         Optional<ProductSize> o = productSizeService.findById(dto.getId());
         if (o.isPresent()) {
             ProductSize p = o.get();
-            return productSizeService.findProductByProductNameAndProductOwner(p.getProduct().getName(), p.getProduct().getOwner());
+            List<ProductSize> fetched = productSizeService.findProductByProductNameAndProductOwner(p.getProduct().getName(), p.getProduct().getOwner());
+            fetched.forEach(f -> {
+                result.putIfAbsent(f.getProduct().getId(), f);
+            });
         }
-        return result;
+        return new ArrayList<>(result.values());
     }
 }
