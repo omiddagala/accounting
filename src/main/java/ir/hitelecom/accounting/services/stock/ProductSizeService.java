@@ -28,6 +28,7 @@ public class ProductSizeService extends BaseService {
         List<Object[]> list = productSizeRepository.getSizes(productId != null ? productId : 0);
         list.forEach(elem -> {
             ProductSize productSize = new ProductSize();
+            productSize.setId(((BigInteger) elem[3]).longValue());
             Size size = new Size();
             size.setId(((BigInteger) elem[0]).longValue());
             size.setValue((String) elem[1]);
