@@ -50,7 +50,6 @@ public class OrderService extends BaseService {
         Order fetchedOrder;
         if (o.isPresent()) {
             fetchedOrder = o.get();
-            fetchedOrder.setClosed(true);
             order.getListOrders().forEach(ord -> {
                 ProductSize source = productSizeRepository.findByProductReservoirAndProductNameAndSizeId(fetchedOrder.getSource(), fetchedOrder.getProduct().getName(), ord.getId());
                 source.setCount(new Long(source.getCount() == null ? 0 : source.getCount() - Long.valueOf(ord.getValue())).intValue());
@@ -82,6 +81,7 @@ public class OrderService extends BaseService {
                     destination.setCount(new Long(destination.getCount() == null ? 0 : destination.getCount() + Long.valueOf(ord.getValue())).intValue());
                 }
             });
+            orderRepository.delete(fetchedOrder);
         }
     }
 
