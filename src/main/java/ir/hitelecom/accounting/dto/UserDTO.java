@@ -3,11 +3,20 @@ package ir.hitelecom.accounting.dto;
 import java.util.List;
 
 public class UserDTO {
+    private Long id;
     private String name;
     private String family;
     private String mobile;
     private String username;
     private List<String> roles;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

@@ -166,6 +166,7 @@ public class User implements UserDetails {
 
     public UserDTO convertEntityToDTO() {
         UserDTO userDTO = new UserDTO();
+        userDTO.setId(this.getId());
         userDTO.setName(this.getName());
         userDTO.setFamily(this.getFamily());
         userDTO.setUsername(this.getUsername());
