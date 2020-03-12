@@ -46,8 +46,14 @@ public class ProductService extends BaseService {
         Product result = productRepository.save(product);
         productSizeService.deleteByProduct(product);
         product.getProductSizes().forEach(productSize -> {
-            productSize.setProduct(result);
-            productSizeService.save(productSize);
+            if (productSize.getCount() == null) {
+                if (productSize.getId() != null) {
+                    productSizeService.deleteById(productSize.getId());
+                }
+            } else {
+                productSize.setProduct(result);
+                productSizeService.save(productSize);
+            }
         });
     }
 

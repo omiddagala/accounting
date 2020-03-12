@@ -62,4 +62,8 @@ public class ProductSizeService extends BaseService {
     public List<ProductSize> findProductByProductNameAndProductOwner(String name, User owner) {
         return productSizeRepository.findProductByProductNameAndProductOwner(name, owner);
     }
+
+    public void deleteById(Long id) {
+        productSizeRepository.deleteById(id);
+    }
 }
