@@ -5,7 +5,7 @@ import java.util.Map;
 
 public enum Role {
     //**_RO(XX)LE_**
-    SHXXOP_ADXXMIN("ROLE_SHXXOP_ADXXMIN", "Boba_Fett"),   //modire kol
+    SHXXOP_ADXXMIN("ROLE_SHXXOP_ADXXMIN", "ROLE_SHXXOP_ADXXMIN"),   //modire kol
     STOCK_MANAGER("STOCK_MANAGER", "STOCK_MANAGER"),       //modire anbar
     STOCK_EMPLOYEE("STOCK_EMPLOYEE", "STOCK_EMPLOYEE"),     //anbardar
     CASHIER("CASHIER", "CASHIER"),              //sandoghdar
