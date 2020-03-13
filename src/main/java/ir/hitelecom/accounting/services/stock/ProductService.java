@@ -56,8 +56,15 @@ public class ProductService extends BaseService {
     }
 
     public List<Product> fetchAll(Product product) {
-        User user = userRepository.findByUsername(getLoggedInUsername());
-        return productRepository.search(product.getName(), product.getType(), user.getParent());
+        if (product.getId() == null) {
+            User user = userRepository.findByUsername(getLoggedInUsername());
+            return productRepository.search(product.getName(), product.getType(), user.getParent());
+        } else {
+            Optional<ProductSize> productSize = productSizeService.findById(product.getId());
+            List<Product> result = new ArrayList<Product>();
+            productSize.ifPresent(size -> result.add(size.getProduct()));
+            return result;
+        }
     }
 
     public void delete(Product product) {

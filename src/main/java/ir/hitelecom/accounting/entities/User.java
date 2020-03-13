@@ -171,6 +171,7 @@ public class User implements UserDetails {
         userDTO.setFamily(this.getFamily());
         userDTO.setUsername(this.getUsername());
         userDTO.setRoles(convertServerRolesToClient());
+        userDTO.setReservoir(this.getReservoir());
         return userDTO;
     }
 
