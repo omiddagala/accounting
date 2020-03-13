@@ -52,7 +52,7 @@ public class OrderService extends BaseService {
             fetchedOrder = o.get();
             order.getListOrders().forEach(ord -> {
                 ProductSize source = productSizeRepository.findByProductReservoirAndProductNameAndSizeId(fetchedOrder.getSource(), fetchedOrder.getProduct().getName(), ord.getId());
-                source.setCount(new Long(source.getCount() == null ? 0 : source.getCount() - Long.valueOf(ord.getValue())).intValue());
+                source.setCount(new Long(source.getCount() == null ? 0 : source.getCount() - (ord.getValue() != null && !"".equals(ord.getValue()) ? Long.valueOf(ord.getValue()) : 0)).intValue());
                 ProductSize destination = productSizeRepository.findByProductReservoirAndProductNameAndSizeId(fetchedOrder.getDestination(), fetchedOrder.getProduct().getName(), ord.getId());
                 if (destination == null) {
                     Product destinationProduct = productRepository.findByReservoirAndName(fetchedOrder.getDestination(), fetchedOrder.getProduct().getName());
@@ -64,21 +64,21 @@ public class OrderService extends BaseService {
                             newProduct.setReservoir(fetchedOrder.getDestination());
                             Product savedProduct = productRepository.save(newProduct);
                             ProductSize newProductSize = new ProductSize();
-                            newProductSize.setCount(Integer.valueOf(ord.getValue()));
+                            newProductSize.setCount((ord.getValue() != null && !"".equals(ord.getValue()) ? Integer.valueOf(ord.getValue()) : 0));
                             newProductSize.setProduct(savedProduct);
                             newProductSize.setSize(source.getSize());
                             productSizeRepository.save(newProductSize);
                         }
                     } else {
                         ProductSize newProductSize = new ProductSize();
-                        newProductSize.setCount(Integer.valueOf(ord.getValue()));
+                        newProductSize.setCount((ord.getValue() != null && !"".equals(ord.getValue()) ? Integer.valueOf(ord.getValue()) : 0));
                         newProductSize.setProduct(destinationProduct);
                         newProductSize.setSize(source.getSize());
                         productSizeRepository.save(newProductSize);
                     }
 
                 } else {
-                    destination.setCount(new Long(destination.getCount() == null ? 0 : destination.getCount() + Long.valueOf(ord.getValue())).intValue());
+                    destination.setCount(new Long(destination.getCount() == null ? 0 : destination.getCount() +  (ord.getValue() != null && !"".equals(ord.getValue()) ? Long.valueOf(ord.getValue()) : 0)).intValue());
                 }
             });
             orderRepository.delete(fetchedOrder);
