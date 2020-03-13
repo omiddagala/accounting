@@ -45,16 +45,12 @@ public class ProductService extends BaseService {
         product.setOwner(user.getParent());
         Product result = productRepository.save(product);
         productSizeService.deleteByProduct(product);
-        List<ProductSize> deletes =  new ArrayList<>();
         product.getProductSizes().forEach(productSize -> {
             if (productSize.getCount() == null) {
-                if (productSize.getId() != null) {
-                    deletes.add(productSize);
-                }
-            } else {
-                productSize.setProduct(result);
-                productSizeService.save(productSize);
+                productSize.setCount(0);
             }
+            productSize.setProduct(result);
+            productSizeService.save(productSize);
         });
 
     }
