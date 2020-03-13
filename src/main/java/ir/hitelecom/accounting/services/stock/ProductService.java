@@ -44,7 +44,6 @@ public class ProductService extends BaseService {
         User user = userRepository.findByUsername(getLoggedInUsername());
         product.setOwner(user.getParent());
         Product result = productRepository.save(product);
-        productSizeService.deleteByProduct(product);
         product.getProductSizes().forEach(productSize -> {
             if (productSize.getCount() == null) {
                 productSize.setCount(0);
