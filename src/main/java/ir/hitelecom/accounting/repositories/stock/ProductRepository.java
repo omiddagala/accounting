@@ -15,4 +15,6 @@ public interface ProductRepository extends CrudRepository<Product,Long> {
 
     Product findByReservoirAndName(Reservoir reservoir, String name);
 
+    List<Product> findAll();
+
 }
