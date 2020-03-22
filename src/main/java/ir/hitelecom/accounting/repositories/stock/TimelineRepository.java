@@ -10,4 +10,5 @@ import java.util.List;
 public interface TimelineRepository extends CrudRepository<Timeline,Long> {
 
     List<Timeline> findByProductSize(ProductSize productSize);
+    void deleteByProductSizeProduct(Product product);
 }

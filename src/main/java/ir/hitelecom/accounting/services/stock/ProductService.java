@@ -3,9 +3,11 @@ package ir.hitelecom.accounting.services.stock;
 import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.stock.Product;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
+import ir.hitelecom.accounting.entities.stock.Timeline;
 import ir.hitelecom.accounting.repositories.UserRepository;
 import ir.hitelecom.accounting.repositories.stock.ProductRepository;
 import ir.hitelecom.accounting.repositories.stock.ProductSizeRepository;
+import ir.hitelecom.accounting.repositories.stock.TimelineRepository;
 import ir.hitelecom.accounting.services.BaseService;
 import ir.hitelecom.accounting.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,8 @@ public class ProductService extends BaseService {
     private ProductSizeService productSizeService;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private TimelineRepository timelineRepository;
 
     public Product findOne(Long id) {
         Optional<Product> result = productRepository.findById(id);
@@ -43,6 +47,7 @@ public class ProductService extends BaseService {
     public void saveOrUpdate(Product product) {
         User user = userRepository.findByUsername(getLoggedInUsername());
         product.setOwner(user.getParent());
+        product.setUser(user);
         Product result = productRepository.save(product);
         product.getProductSizes().forEach(productSize -> {
             if (productSize.getCount() == null) {
@@ -57,7 +62,7 @@ public class ProductService extends BaseService {
     public List<Product> fetchAll(Product product) {
         if (product.getId() == null) {
             User user = userRepository.findByUsername(getLoggedInUsername());
-            return productRepository.search(product.getName(), product.getType(), user.getParent());
+            return productRepository.search(product.getName(), product.getType(), user);
         } else {
             Optional<ProductSize> productSize = productSizeService.findById(product.getId());
             List<Product> result = new ArrayList<Product>();
@@ -68,6 +73,7 @@ public class ProductService extends BaseService {
 
     public void delete(Product product) {
         productSizeService.deleteByProduct(product);
+        timelineRepository.deleteByProductSizeProduct(product);
         productRepository.delete(product);
     }
 

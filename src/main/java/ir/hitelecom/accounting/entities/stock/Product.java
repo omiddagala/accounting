@@ -19,9 +19,13 @@ public class Product {
     private String image;
     private Date expireDate;
     private Long price;
+    private Long buyPrice;
     @ManyToOne
     @JsonIgnore
     private User owner;
+    @ManyToOne
+    @JsonIgnore
+    private User user;
     @ManyToOne
     private Reservoir reservoir;
     @ManyToOne
@@ -111,6 +115,22 @@ public class Product {
 
     public List<ProductSize> getProductSizes() {
         return productSizes;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Long getBuyPrice() {
+        return buyPrice;
+    }
+
+    public void setBuyPrice(Long buyPrice) {
+        this.buyPrice = buyPrice;
     }
 
     public void setProductSizes(List<ProductSize> productSizes) {
