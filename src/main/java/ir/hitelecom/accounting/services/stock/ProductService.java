@@ -1,10 +1,12 @@
 package ir.hitelecom.accounting.services.stock;
 
 import ir.hitelecom.accounting.entities.User;
+import ir.hitelecom.accounting.entities.stock.Group;
 import ir.hitelecom.accounting.entities.stock.Product;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
 import ir.hitelecom.accounting.entities.stock.Timeline;
 import ir.hitelecom.accounting.repositories.UserRepository;
+import ir.hitelecom.accounting.repositories.stock.GroupRepository;
 import ir.hitelecom.accounting.repositories.stock.ProductRepository;
 import ir.hitelecom.accounting.repositories.stock.ProductSizeRepository;
 import ir.hitelecom.accounting.repositories.stock.TimelineRepository;
@@ -32,6 +34,8 @@ public class ProductService extends BaseService {
     private UserRepository userRepository;
     @Autowired
     private TimelineRepository timelineRepository;
+    @Autowired
+    private GroupRepository groupRepository;
 
     public Product findOne(Long id) {
         Optional<Product> result = productRepository.findById(id);
@@ -49,11 +53,18 @@ public class ProductService extends BaseService {
         product.setOwner(user.getParent());
         product.setUser(user);
         Product result = productRepository.save(product);
+        Optional<Group> o = groupRepository.findById(product.getGroup().getId());
+        Group group = o.get();
+        if (group.getFromCode() == null) {
+            group.setFromCode(0L);
+        }
         product.getProductSizes().forEach(productSize -> {
             if (productSize.getCount() == null) {
                 productSize.setCount(0);
             }
             productSize.setProduct(result);
+            productSize.setCode(group.getFromCode());
+            group.setFromCode(group.getFromCode() + 1);
             productSizeService.save(productSize);
         });
 
@@ -64,9 +75,9 @@ public class ProductService extends BaseService {
             User user = userRepository.findByUsername(getLoggedInUsername());
             return productRepository.search(product.getName(), product.getType(), user);
         } else {
-            Optional<ProductSize> productSize = productSizeService.findById(product.getId());
+            ProductSize productSize = productSizeService.findByCode(product.getId());
             List<Product> result = new ArrayList<Product>();
-            productSize.ifPresent(size -> result.add(size.getProduct()));
+            result.add(productSize.getProduct());
             return result;
         }
     }
@@ -79,9 +90,9 @@ public class ProductService extends BaseService {
 
     public List<ProductSize> search(ProductSize dto) {
         Map<Long, ProductSize> result = new HashMap<>();
-        Optional<ProductSize> o = productSizeService.findById(dto.getId());
-        if (o.isPresent()) {
-            ProductSize p = o.get();
+        ProductSize o = productSizeService.findByCode(dto.getId());
+        if (o != null) {
+            ProductSize p = o;
             List<ProductSize> fetched = productSizeService.findProductByProductNameAndProductOwner(p.getProduct().getName(), p.getProduct().getOwner());
             fetched.forEach(f -> {
                 result.putIfAbsent(f.getProduct().getId(), f);

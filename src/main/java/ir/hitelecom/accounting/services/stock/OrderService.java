@@ -1,10 +1,12 @@
 package ir.hitelecom.accounting.services.stock;
 
 import ir.hitelecom.accounting.entities.User;
+import ir.hitelecom.accounting.entities.stock.Group;
 import ir.hitelecom.accounting.entities.stock.Order;
 import ir.hitelecom.accounting.entities.stock.Product;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
 import ir.hitelecom.accounting.repositories.UserRepository;
+import ir.hitelecom.accounting.repositories.stock.GroupRepository;
 import ir.hitelecom.accounting.repositories.stock.OrderRepository;
 import ir.hitelecom.accounting.repositories.stock.ProductRepository;
 import ir.hitelecom.accounting.repositories.stock.ProductSizeRepository;
@@ -29,6 +31,8 @@ public class OrderService extends BaseService {
     private ProductSizeRepository productSizeRepository;
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private GroupRepository groupRepository;
 
     public void submit(Order order) {
         User user = userRepository.findByUsername(getLoggedInUsername());
@@ -60,6 +64,11 @@ public class OrderService extends BaseService {
                         Optional<Product> op = productRepository.findById(fetchedOrder.getProduct().getId());
                         if (op.isPresent()) {
                             Product product = op.get();
+                            Optional<Group> g = groupRepository.findById(product.getGroup().getId());
+                            Group group = g.get();
+                            if (group.getFromCode() == null) {
+                                group.setFromCode(0L);
+                            }
                             Product newProduct = product.clone();
                             newProduct.setReservoir(fetchedOrder.getDestination());
                             Product savedProduct = productRepository.save(newProduct);
@@ -67,6 +76,8 @@ public class OrderService extends BaseService {
                             newProductSize.setCount((ord.getValue() != null && !"".equals(ord.getValue()) ? Integer.valueOf(ord.getValue()) : 0));
                             newProductSize.setProduct(savedProduct);
                             newProductSize.setSize(source.getSize());
+                            newProductSize.setCode(group.getFromCode());
+                            group.setFromCode(group.getFromCode() + 1);
                             productSizeRepository.save(newProductSize);
                         }
                     } else {
@@ -74,6 +85,13 @@ public class OrderService extends BaseService {
                         newProductSize.setCount((ord.getValue() != null && !"".equals(ord.getValue()) ? Integer.valueOf(ord.getValue()) : 0));
                         newProductSize.setProduct(destinationProduct);
                         newProductSize.setSize(source.getSize());
+                        Optional<Group> g = groupRepository.findById(destinationProduct.getGroup().getId());
+                        Group group = g.get();
+                        if (group.getFromCode() == null) {
+                            group.setFromCode(0L);
+                        }
+                        newProductSize.setCode(group.getFromCode());
+                        group.setFromCode(group.getFromCode() + 1);
                         productSizeRepository.save(newProductSize);
                     }
 

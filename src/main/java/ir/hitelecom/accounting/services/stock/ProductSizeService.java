@@ -42,6 +42,7 @@ public class ProductSizeService extends BaseService {
             size.setValue((String) elem[1]);
             productSize.setSize(size);
             productSize.setCount((Integer) elem[2]);
+            productSize.setCode((Long) elem[7]);
             result.add(productSize);
         });
         return result;
@@ -55,8 +56,8 @@ public class ProductSizeService extends BaseService {
         productSizeRepository.save(productSize);
     }
 
-    public Optional<ProductSize> findById(Long id) {
-        return productSizeRepository.findById(id);
+    public ProductSize findByCode(Long id) {
+        return productSizeRepository.findByCode(id);
     }
 
     public List<ProductSize> findProductByProductNameAndProductOwner(String name, User owner) {

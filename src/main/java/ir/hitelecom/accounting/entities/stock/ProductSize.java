@@ -15,6 +15,7 @@ public class ProductSize {
     @ManyToOne
     private Size size;
     private Integer count;
+    private Long code;
 
     public Long getId() {
         return id;
@@ -48,4 +49,11 @@ public class ProductSize {
         this.count = count;
     }
 
+    public Long getCode() {
+        return code;
+    }
+
+    public void setCode(Long code) {
+        this.code = code;
+    }
 }
