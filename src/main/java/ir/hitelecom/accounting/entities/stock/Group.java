@@ -13,6 +13,7 @@ public class Group {
     private String name;
     private String username;
     private Long fromCode;
+    private Long toCode;
 
     public Long getId() {
         return id;
@@ -44,5 +45,13 @@ public class Group {
 
     public void setFromCode(Long fromCode) {
         this.fromCode = fromCode;
+    }
+
+    public Long getToCode() {
+        return toCode;
+    }
+
+    public void setToCode(Long toCode) {
+        this.toCode = toCode;
     }
 }
