@@ -42,7 +42,7 @@ public class ProductSizeService extends BaseService {
             size.setValue((String) elem[1]);
             productSize.setSize(size);
             productSize.setCount((Integer) elem[2]);
-            productSize.setCode((Long) elem[7]);
+            productSize.setCode(elem[7] == null ? null : ((BigInteger) elem[7]).longValue());
             result.add(productSize);
         });
         return result;
