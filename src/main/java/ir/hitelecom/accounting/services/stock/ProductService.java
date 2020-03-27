@@ -49,22 +49,32 @@ public class ProductService extends BaseService {
     }
 
     public void saveOrUpdate(Product product) {
+        if (productRepository.existsByName(product.getName())) {
+            throw new RuntimeException(getErrorMessage("nameExists"));
+        }
+        boolean isEdit = product.getId() != null;
         User user = userRepository.findByUsername(getLoggedInUsername());
         product.setOwner(user.getParent());
         product.setUser(user);
         Product result = productRepository.save(product);
-        Optional<Group> o = groupRepository.findById(product.getGroup().getId());
-        Group group = o.get();
-        if (group.getFromCode() == null) {
-            group.setFromCode(0L);
+        Group group = null;
+        if (!isEdit) {
+            Optional<Group> o = groupRepository.findById(product.getGroup().getId());
+            group = o.get();
+            if (group.getFromCode() == null) {
+                group.setFromCode(0L);
+            }
         }
+        Group finalGroup = group;
         product.getProductSizes().forEach(productSize -> {
             if (productSize.getCount() == null) {
                 productSize.setCount(0);
             }
             productSize.setProduct(result);
-            productSize.setCode(group.getFromCode());
-            group.setFromCode(group.getFromCode() + 1);
+            if (!isEdit) {
+                productSize.setCode(finalGroup.getFromCode());
+                finalGroup.setFromCode(finalGroup.getFromCode() + 1);
+            }
             productSizeService.save(productSize);
         });
 

@@ -4,6 +4,7 @@ import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.stock.Reservoir;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -12,6 +13,7 @@ public class Order {
     @Id
     @GeneratedValue
     private Long id;
+    private Date submitDate;
     @ManyToOne
     private Reservoir source;
     @ManyToOne
@@ -87,5 +89,13 @@ public class Order {
 
     public void setClosed(boolean closed) {
         this.closed = closed;
+    }
+
+    public Date getSubmitDate() {
+        return submitDate;
+    }
+
+    public void setSubmitDate(Date submitDate) {
+        this.submitDate = submitDate;
     }
 }
