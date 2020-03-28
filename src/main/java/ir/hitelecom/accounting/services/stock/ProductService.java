@@ -1,5 +1,6 @@
 package ir.hitelecom.accounting.services.stock;
 
+import ir.hitelecom.accounting.dto.ProductListDTO;
 import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.stock.Group;
 import ir.hitelecom.accounting.entities.stock.Product;
@@ -80,10 +81,10 @@ public class ProductService extends BaseService {
 
     }
 
-    public List<Product> fetchAll(Product product) {
+    public List<Product> fetchAll(ProductListDTO product) {
         if (product.getId() == null) {
             User user = userRepository.findByUsername(getLoggedInUsername());
-            return productRepository.search(product.getName(), product.getType(), user);
+            return productRepository.search(product.getName(), product.getType(), user, getPageable(product.getPageableDTO()));
         } else {
             ProductSize productSize = productSizeService.findByCode(product.getId());
             List<Product> result = new ArrayList<Product>();
@@ -101,6 +102,9 @@ public class ProductService extends BaseService {
     public List<ProductSize> search(ProductSize dto) {
         Map<Long, ProductSize> result = new HashMap<>();
         ProductSize o = productSizeService.findByCode(dto.getId());
+        if (o == null) {
+            o = productSizeService.findById(dto.getId());
+        }
         if (o != null) {
             ProductSize p = o;
             List<ProductSize> fetched = productSizeService.findProductByProductNameAndProductOwner(p.getProduct().getName(), p.getProduct().getOwner());

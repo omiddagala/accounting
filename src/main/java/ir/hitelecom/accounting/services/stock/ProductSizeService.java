@@ -60,6 +60,11 @@ public class ProductSizeService extends BaseService {
         return productSizeRepository.findByCode(id);
     }
 
+    public ProductSize findById(Long id) {
+        Optional<ProductSize> o = productSizeRepository.findById(id);
+        return o.orElse(null);
+    }
+
     public List<ProductSize> findProductByProductNameAndProductOwner(String name, User owner) {
         return productSizeRepository.findProductByProductNameAndProductOwner(name, owner);
     }

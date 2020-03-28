@@ -1,6 +1,7 @@
 package ir.hitelecom.accounting.controllers.stock;
 
 import ir.hitelecom.accounting.dto.IdDTO;
+import ir.hitelecom.accounting.dto.ProductListDTO;
 import ir.hitelecom.accounting.entities.stock.Product;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
 import ir.hitelecom.accounting.services.stock.ProductService;
@@ -39,7 +40,7 @@ public class ProductController {
 
     @PostMapping("/list")
     @ResponseBody
-    public List<Product> fetchAll(@RequestBody Product product) {
+    public List<Product> fetchAll(@RequestBody ProductListDTO product) {
         return productService.fetchAll(product);
     }
 
