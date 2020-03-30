@@ -83,6 +83,7 @@ public class OrderService extends BaseService {
                             productSizeRepository.save(newProductSize);
                         }
                     } else {
+                        destinationProduct.setReservoir(fetchedOrder.getDestination());
                         ProductSize newProductSize = new ProductSize();
                         newProductSize.setCount((ord.getValue() != null && !"".equals(ord.getValue()) ? Integer.valueOf(ord.getValue()) : 0));
                         newProductSize.setProduct(destinationProduct);

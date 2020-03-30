@@ -85,9 +85,9 @@ public class ProductService extends BaseService {
         if (product.getId() == null) {
             User user = userRepository.findByUsername(getLoggedInUsername());
             if (!product.isOrder()) {
-                return productRepository.search(product.getName(), product.getType(), user, getPageable(product.getPageableDTO()));
+                return productRepository.search(product.getName(), product.getType(), user.getReservoir(), getPageable(product.getPageableDTO()));
             } else {
-                return productRepository.search(product.getName(), product.getType(), user.getParent(), getPageable(product.getPageableDTO()));
+                return productRepository.searchForOrder(product.getName(), product.getType(), user.getParent(), getPageable(product.getPageableDTO()));
             }
         } else {
             ProductSize productSize = productSizeService.findByCode(product.getId());
