@@ -147,6 +147,7 @@ public class Product {
         product.setGroup(this.getGroup());
         product.setImage(this.image);
         product.setPrice(this.getPrice());
+        product.setBuyPrice(this.getBuyPrice());
         product.setReservoir(this.getReservoir());
         return product;
     }
