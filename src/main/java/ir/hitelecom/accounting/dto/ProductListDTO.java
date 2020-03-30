@@ -5,6 +5,7 @@ public class ProductListDTO {
     private Long id;
     private String name;
     private String type;
+    private boolean order;
     private PageableDTO pageableDTO;
 
     public Long getId() {
@@ -37,5 +38,13 @@ public class ProductListDTO {
 
     public void setPageableDTO(PageableDTO pageableDTO) {
         this.pageableDTO = pageableDTO;
+    }
+
+    public boolean isOrder() {
+        return order;
+    }
+
+    public void setOrder(boolean order) {
+        this.order = order;
     }
 }

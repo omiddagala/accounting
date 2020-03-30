@@ -84,7 +84,11 @@ public class ProductService extends BaseService {
     public List<Product> fetchAll(ProductListDTO product) {
         if (product.getId() == null) {
             User user = userRepository.findByUsername(getLoggedInUsername());
-            return productRepository.search(product.getName(), product.getType(), user, getPageable(product.getPageableDTO()));
+            if (!product.isOrder()) {
+                return productRepository.search(product.getName(), product.getType(), user, getPageable(product.getPageableDTO()));
+            } else {
+                return productRepository.search(product.getName(), product.getType(), user.getParent(), getPageable(product.getPageableDTO()));
+            }
         } else {
             ProductSize productSize = productSizeService.findByCode(product.getId());
             List<Product> result = new ArrayList<Product>();
