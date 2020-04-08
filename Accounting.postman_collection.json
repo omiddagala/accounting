@@ -1,0 +1,521 @@
+{
+	"info": {
+		"_postman_id": "725ce4c2-8316-4b4e-9e26-820c1e5a2233",
+		"name": "Accounting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Oauth login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "authorization",
+						"type": "text",
+						"value": "Basic ZW5nX2FwcDplbmdfYXBw"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "karbar",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "actuator_client",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "agent@razi",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "test",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9000/oauth/token",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer and Card - Fetch All",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:9000/v1/shop/customer/list",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"shop",
+						"customer",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer and Card - Save",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nationalCode\": \"9\",\n    \"mobile\": \"10008\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/v1/shop/customer/save",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"shop",
+						"customer",
+						"save"
+					]
+				},
+				"description": "to update entity send \"id\""
+			},
+			"response": []
+		},
+		{
+			"name": "Customer and Card - Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/v1/shop/customer/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"shop",
+						"customer",
+						"delete"
+					]
+				},
+				"description": "to update entity send \"id\""
+			},
+			"response": []
+		},
+		{
+			"name": "Customer and Card - Find One",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nationalCode\": 9\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/v1/shop/customer/findOne",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"shop",
+						"customer",
+						"findOne"
+					]
+				},
+				"description": "to update entity send \"id\""
+			},
+			"response": []
+		},
+		{
+			"name": "Sales - Fetch All",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:9000/v1/shop/sales/list",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"shop",
+						"sales",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sales  - Save",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customer\":{\n    \t\"id\":5\n    },\n    \"reservoir\":{\n    \t\"id\":1\n    },\n    \"productSize\":{\n    \t\n    },\n    \"amount\":\"5\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/v1/shop/sales/save",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"shop",
+						"sales",
+						"save"
+					]
+				},
+				"description": "to update entity send \"id\""
+			},
+			"response": []
+		},
+		{
+			"name": "Sales  - Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/v1/shop/sales/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"shop",
+						"sales",
+						"delete"
+					]
+				},
+				"description": "to update entity send \"id\""
+			},
+			"response": []
+		},
+		{
+			"name": "Sales  - Find by Customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nationalCode\": 9\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/v1/shop/sales/findByCustomer",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"shop",
+						"sales",
+						"findByCustomer"
+					]
+				},
+				"description": "to update entity send \"id\""
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
