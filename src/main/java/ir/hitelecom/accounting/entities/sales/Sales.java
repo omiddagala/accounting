@@ -1,7 +1,7 @@
 package ir.hitelecom.accounting.entities.sales;
 
+import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
-import ir.hitelecom.accounting.entities.stock.Reservoir;
 
 import javax.persistence.*;
 
@@ -14,10 +14,12 @@ public class Sales {
     @ManyToOne
     private Customer customer;
     @ManyToOne
-    private Reservoir reservoir;
+    private User user;
     @ManyToOne
     private ProductSize productSize;
     private int amount;
+    @Enumerated
+    private Status status;
 
     public Long getId() {
         return id;
@@ -35,12 +37,12 @@ public class Sales {
         this.customer = customer;
     }
 
-    public Reservoir getReservoir() {
-        return reservoir;
+    public User getUser() {
+        return user;
     }
 
-    public void setReservoir(Reservoir reservoir) {
-        this.reservoir = reservoir;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public ProductSize getProductSize() {
@@ -57,5 +59,13 @@ public class Sales {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

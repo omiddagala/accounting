@@ -1,6 +1,5 @@
 package ir.hitelecom.accounting.services.sales;
 
-import ir.hitelecom.accounting.dto.CustomerDTO;
 import ir.hitelecom.accounting.dto.PageableDTO;
 import ir.hitelecom.accounting.entities.sales.Sales;
 import ir.hitelecom.accounting.repositories.sales.SalesRepository;
@@ -29,7 +28,4 @@ public class SalesService extends BaseService {
         salesRepository.delete(sales);
     }
 
-    public List<Sales> fetchAllByCustomer(CustomerDTO dto){
-        return salesRepository.findByCustomer(dto.getCustomer(), getPageable(dto.getPageableDTO()));
-    }
 }

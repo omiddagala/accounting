@@ -1,6 +1,5 @@
 package ir.hitelecom.accounting.controllers.sales;
 
-import ir.hitelecom.accounting.dto.CustomerDTO;
 import ir.hitelecom.accounting.dto.PageableDTO;
 import ir.hitelecom.accounting.entities.sales.Sales;
 import ir.hitelecom.accounting.services.sales.SalesService;
@@ -34,9 +33,5 @@ public class SalesController {
         salesService.delete(sales);
     }
 
-    @PostMapping("/findByCustomer")
-    @ResponseBody
-    public List<Sales> findByCustomer(@RequestBody CustomerDTO dto) {
-        return salesService.fetchAllByCustomer(dto);
-    }
+
 }
