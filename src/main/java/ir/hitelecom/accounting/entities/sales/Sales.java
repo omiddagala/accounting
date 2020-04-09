@@ -4,6 +4,7 @@ import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "sales")
@@ -22,6 +23,8 @@ public class Sales {
     private Status status;
     @Transient
     private Long productCode;
+    private LocalDateTime  inCartDate;
+    private LocalDateTime finishedDate;
 
     public Long getId() {
         return id;
@@ -77,5 +80,21 @@ public class Sales {
 
     public void setProductCode(Long productCode) {
         this.productCode = productCode;
+    }
+
+    public LocalDateTime getInCartDate() {
+        return inCartDate;
+    }
+
+    public void setInCartDate(LocalDateTime inCartDate) {
+        this.inCartDate = inCartDate;
+    }
+
+    public LocalDateTime getFinishedDate() {
+        return finishedDate;
+    }
+
+    public void setFinishedDate(LocalDateTime finishedDate) {
+        this.finishedDate = finishedDate;
     }
 }

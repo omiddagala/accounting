@@ -1,6 +1,6 @@
 package ir.hitelecom.accounting.controllers.sales;
 
-import ir.hitelecom.accounting.dto.PageableDTO;
+import ir.hitelecom.accounting.dto.SalesListDTO;
 import ir.hitelecom.accounting.entities.sales.Sales;
 import ir.hitelecom.accounting.services.sales.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class SalesController {
 
     @PostMapping("/list")
     @ResponseBody
-    public List<Sales> fetchAll(@RequestBody PageableDTO dto) {
+    public List<Sales> fetchAll(@RequestBody SalesListDTO dto) {
         return salesService.fetchAll(dto);
     }
 
