@@ -20,6 +20,8 @@ public class Sales {
     private int amount;
     @Enumerated
     private Status status;
+    @Transient
+    private Long productCode;
 
     public Long getId() {
         return id;
@@ -67,5 +69,13 @@ public class Sales {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public Long getProductCode() {
+        return productCode;
+    }
+
+    public void setProductCode(Long productCode) {
+        this.productCode = productCode;
     }
 }
