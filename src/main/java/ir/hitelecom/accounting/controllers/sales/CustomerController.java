@@ -1,6 +1,6 @@
 package ir.hitelecom.accounting.controllers.sales;
 
-import ir.hitelecom.accounting.dto.PageableDTO;
+import ir.hitelecom.accounting.dto.CustomerListDTO;
 import ir.hitelecom.accounting.entities.sales.Customer;
 import ir.hitelecom.accounting.services.sales.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class CustomerController {
 
     @PostMapping("/list")
     @ResponseBody
-    public List<Customer> fetchAll(@RequestBody PageableDTO dto) {
+    public List<Customer> fetchAll(@RequestBody CustomerListDTO dto) {
         return customerService.fetchAll(dto);
     }
 
@@ -31,11 +31,5 @@ public class CustomerController {
     @ResponseBody
     public void delete(@RequestBody Customer customer) {
         customerService.delete(customer);
-    }
-
-    @PostMapping("/findOne")
-    @ResponseBody
-    public Customer findOne(@RequestBody Customer customer) {
-        return customerService.findOne(customer);
     }
 }
