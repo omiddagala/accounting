@@ -15,8 +15,8 @@ public class Sales {
     private Customer customer;
     @ManyToOne
     private Reservoir reservoir;
-//    @ManyToOne
-//    private ProductSize productSize;
+    @ManyToOne
+    private ProductSize productSize;
     private int amount;
 
     public Long getId() {
@@ -43,19 +43,19 @@ public class Sales {
         this.reservoir = reservoir;
     }
 
-//    public ProductSize getProductSize() {
-//        return productSize;
-//    }
-//
-//    public void setProductSize(ProductSize productSize) {
-//        this.productSize = productSize;
-//    }
+    public ProductSize getProductSize() {
+        return productSize;
+    }
+
+    public void setProductSize(ProductSize productSize) {
+        this.productSize = productSize;
+    }
 
     public int getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 }

@@ -12,6 +12,8 @@ public class Customer {
     private String mobile;
     @Column(name = "national_code", unique = true)
     private String nationalCode;
+    private String name;
+    private String family;
 
     public Long getId() {
         return id;
@@ -35,5 +37,21 @@ public class Customer {
 
     public void setNationalCode(String nationalCode) {
         this.nationalCode = nationalCode;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getFamily() {
+        return family;
+    }
+
+    public void setFamily(String family) {
+        this.family = family;
     }
 }

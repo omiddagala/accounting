@@ -1,10 +1,12 @@
 package ir.hitelecom.accounting.controllers.sales;
 
+import ir.hitelecom.accounting.dto.PageableDTO;
 import ir.hitelecom.accounting.entities.sales.Customer;
-import ir.hitelecom.accounting.entities.stock.Size;
 import ir.hitelecom.accounting.services.sales.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1/shop/customer")
@@ -15,8 +17,8 @@ public class CustomerController {
 
     @PostMapping("/list")
     @ResponseBody
-    public Iterable<Customer> fetchAll() {
-        return customerService.fetchAll();
+    public List<Customer> fetchAll(@RequestBody PageableDTO dto) {
+        return customerService.fetchAll(dto);
     }
 
     @PostMapping("/save")

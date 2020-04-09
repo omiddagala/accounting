@@ -23,7 +23,6 @@ public class ProductSizeService extends BaseService {
     @Autowired
     private ProductSizeRepository productSizeRepository;
 
-
     public List<ProductSize> getSizes(Long productId) {
         List<ProductSize> result = new ArrayList<>();
         List<Object[]> list = productSizeRepository.getSizes(productId != null ? productId : 0);

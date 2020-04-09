@@ -1,10 +1,13 @@
 package ir.hitelecom.accounting.controllers.sales;
 
-import ir.hitelecom.accounting.entities.sales.Customer;
+import ir.hitelecom.accounting.dto.CustomerDTO;
+import ir.hitelecom.accounting.dto.PageableDTO;
 import ir.hitelecom.accounting.entities.sales.Sales;
 import ir.hitelecom.accounting.services.sales.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1/shop/sales")
@@ -15,14 +18,14 @@ public class SalesController {
 
     @PostMapping("/list")
     @ResponseBody
-    public Iterable<Sales> fetchAll() {
-        return salesService.fetchAll();
+    public List<Sales> fetchAll(@RequestBody PageableDTO dto) {
+        return salesService.fetchAll(dto);
     }
 
     @PostMapping("/save")
     @ResponseBody
-    public Sales saveOrUpdate(@RequestBody Sales customer) {
-        return salesService.saveOrUpdate(customer);
+    public Sales saveOrUpdate(@RequestBody Sales sales) {
+        return salesService.saveOrUpdate(sales);
     }
 
     @PostMapping("/delete")
@@ -33,7 +36,7 @@ public class SalesController {
 
     @PostMapping("/findByCustomer")
     @ResponseBody
-    public Iterable<Sales> findByCustomer(@RequestBody Customer customer) {
-        return salesService.fetchAllByCustomer(customer);
+    public List<Sales> findByCustomer(@RequestBody CustomerDTO dto) {
+        return salesService.fetchAllByCustomer(dto);
     }
 }

@@ -1,6 +1,7 @@
 package ir.hitelecom.accounting.services.sales;
 
-import ir.hitelecom.accounting.entities.sales.Customer;
+import ir.hitelecom.accounting.dto.CustomerDTO;
+import ir.hitelecom.accounting.dto.PageableDTO;
 import ir.hitelecom.accounting.entities.sales.Sales;
 import ir.hitelecom.accounting.repositories.sales.SalesRepository;
 import ir.hitelecom.accounting.services.BaseService;
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -16,8 +17,8 @@ public class SalesService extends BaseService {
     @Autowired
     private SalesRepository salesRepository;
 
-    public Iterable<Sales> fetchAll() {
-        return salesRepository.findAll();
+    public List<Sales> fetchAll(PageableDTO dto) {
+        return salesRepository.findAll(getPageable(dto)).getContent();
     }
 
     public Sales saveOrUpdate(Sales sales) {
@@ -28,7 +29,7 @@ public class SalesService extends BaseService {
         salesRepository.delete(sales);
     }
 
-    public Iterable<Sales> fetchAllByCustomer(Customer customer){
-        return salesRepository.findByCustomer(customer);
+    public List<Sales> fetchAllByCustomer(CustomerDTO dto){
+        return salesRepository.findByCustomer(dto.getCustomer(), getPageable(dto.getPageableDTO()));
     }
 }

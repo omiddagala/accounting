@@ -102,6 +102,15 @@
 						"value": "application/json"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"page\": 0,\n    \"size\": 10,\n    \"direction\": \"ASC\",\n    \"sortBy\": \"id\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "localhost:9000/v1/shop/customer/list",
 					"host": [
@@ -320,6 +329,15 @@
 						"value": "application/json"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"page\": 0,\n    \"size\": 10,\n    \"direction\": \"ASC\",\n    \"sortBy\": \"id\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "localhost:9000/v1/shop/sales/list",
 					"host": [
@@ -372,7 +390,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"customer\":{\n    \t\"id\":5\n    },\n    \"reservoir\":{\n    \t\"id\":1\n    },\n    \"productSize\":{\n    \t\n    },\n    \"amount\":\"5\"\n}",
+					"raw": "{\n    \"customer\":{\n    \t\"id\":5\n    },\n    \"reservoir\":{\n    \t\"id\":1\n    },\n    \"productSize\":{\n    \t\"id\":1\n    },\n    \"amount\":\"5\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -492,7 +510,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nationalCode\": 9\n}",
+					"raw": "{\n    \"customer\": {\n        \"id\": 5\n    },\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
