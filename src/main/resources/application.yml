@@ -1,6 +1,6 @@
 spring:
   application:
-    name: sandogh
+    name: accounting
   profiles:
     active: native
   jackson:
