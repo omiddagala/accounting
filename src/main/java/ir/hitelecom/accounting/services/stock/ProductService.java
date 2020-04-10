@@ -5,23 +5,16 @@ import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.stock.Group;
 import ir.hitelecom.accounting.entities.stock.Product;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
-import ir.hitelecom.accounting.entities.stock.Timeline;
 import ir.hitelecom.accounting.repositories.UserRepository;
 import ir.hitelecom.accounting.repositories.stock.GroupRepository;
 import ir.hitelecom.accounting.repositories.stock.ProductRepository;
-import ir.hitelecom.accounting.repositories.stock.ProductSizeRepository;
 import ir.hitelecom.accounting.repositories.stock.TimelineRepository;
 import ir.hitelecom.accounting.services.BaseService;
-import ir.hitelecom.accounting.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -117,5 +110,9 @@ public class ProductService extends BaseService {
             });
         }
         return new ArrayList<>(result.values());
+    }
+
+    public ProductSize findByCode(Long id){
+        return productSizeService.findByCode(id);
     }
 }

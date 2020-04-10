@@ -104,7 +104,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"alireza\",\n    \"family\": \"azadbakht\",\n    \"nationalCode\": \"123456\",\n    \"mobile\": \"123456\",\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
+					"raw": "{\n    \n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -124,6 +124,66 @@
 						"list"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer and Card - Fetch Unpaid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date\": \"2020-04-10\",\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"DEsc\",\n        \"sortBy\": \"id\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/v1/shop/customer/unpaidList",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"shop",
+						"customer",
+						"unpaidList"
+					]
+				},
+				"description": "to update entity send \"id\""
 			},
 			"response": []
 		},
@@ -163,7 +223,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\":\"alireza\",\n\t\"family\":\"azadbakht\",\n    \"nationalCode\": \"90\",\n    \"mobile\": \"100008\"\n}",
+					"raw": "{\n\t\"name\":\"alireza\",\n\t\"family\":\"azadbakht\",\n    \"nationalCode\": \"900\",\n    \"mobile\": \"1000008\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -271,7 +331,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"customer\": {\n        \"id\": \"5\"\n    },\n    \"user\": {\n        \"id\": \"1\"\n    },\n    \"productSize\": {\n        \"id\": \"1\"\n    },\n    \"status\": \"IN_CART\",\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
+					"raw": "{\n    \"customer\": {\n        \"id\": \"5\"\n    },\n    \"user\": {\n        \"id\": \"1\"\n    },\n    \"productSize\": {\n        \"id\": \"1\"\n    },\n    \n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -331,7 +391,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"customer\": {\r\n        \"id\": 5\r\n    },\r\n    \"productCode\": 1000,\r\n    \"amount\": \"5\",\r\n    \"status\": \"IN_CART\"\r\n}",
+					"raw": "{\r\n    \"customer\": {\r\n        \"id\":11\r\n    },\r\n    \"productCode\": 1000,\r\n    \"amount\": \"5\",\r\n    \"status\": \"UNPAID\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -412,6 +472,54 @@
 					]
 				},
 				"description": "to update entity send \"id\""
+			},
+			"response": []
+		},
+		{
+			"name": "Product Size - Find By Code",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "1000",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/v1/shop/product/findByCode",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"shop",
+						"product",
+						"findByCode"
+					]
+				},
+				"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
 			},
 			"response": []
 		}

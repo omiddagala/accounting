@@ -55,4 +55,10 @@ public class ProductController {
     public List<ProductSize> search(@RequestBody ProductSize dto) {
          return productService.search(dto);
     }
+
+    @PostMapping("/findByCode")
+    @ResponseBody
+    public ProductSize findByCode(@RequestBody Long code) {
+        return productService.findByCode(code);
+    }
 }
