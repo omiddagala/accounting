@@ -28,20 +28,19 @@ public class SalesService extends BaseService {
 
     public List<Sales> fetchAll(SalesListDTO dto) {
         if (dto.getId() == null)
-            return salesRepository.search(dto.getCustomer(), dto.getUser(), dto.getProductSize(), dto.getStatus(), dto.getAddDate(), dto.getPaidDate(), getPageable(dto.getPageableDTO()));
+            return salesRepository.search(dto.getCustomer(), dto.getUser(), dto.getProductSize(), dto.getStatus(), dto.getAddDate(), dto.getPaidDate(),dto.getFactorNumber(), getPageable(dto.getPageableDTO()));
         else
             return salesRepository.findAllById(dto.getId());
     }
 
     public Sales saveOrUpdate(Sales sales) {
-        sales.setProductSize(productSizeRepository.findByCode(sales.getProductCode()));
-        sales.setUser(userRepository.findByUsername(getLoggedInUsername()));
-        if (sales.getStatus().equals(Status.UNPAID)) {
+        if(sales.getId() == null){
+            sales.setProductSize(productSizeRepository.findByCode(sales.getProductCode()));
+            sales.setPrice(sales.getProductSize().getProduct().getPrice());
+            sales.setUser(userRepository.findByUsername(getLoggedInUsername()));
             sales.setAddDateTime(LocalDateTime.now(ZoneId.systemDefault()));
             sales.setAddDate(LocalDate.now(ZoneId.systemDefault()));
-        } else {
-            sales.setPaidDateTime(LocalDateTime.now(ZoneId.systemDefault()));
-            sales.setPaidDate(LocalDate.now(ZoneId.systemDefault()));
+            return salesRepository.save(sales);
         }
         return salesRepository.save(sales);
     }

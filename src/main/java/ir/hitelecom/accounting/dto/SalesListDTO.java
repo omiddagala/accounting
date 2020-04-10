@@ -15,6 +15,7 @@ public class SalesListDTO {
     private Status status;
     private LocalDate addDate;
     private LocalDate paidDate;
+    private Long factorNumber;
     private PageableDTO pageableDTO;
 
     public Long getId() {
@@ -79,5 +80,13 @@ public class SalesListDTO {
 
     public void setPaidDate(LocalDate paidDate) {
         this.paidDate = paidDate;
+    }
+
+    public Long getFactorNumber() {
+        return factorNumber;
+    }
+
+    public void setFactorNumber(Long factorNumber) {
+        this.factorNumber = factorNumber;
     }
 }

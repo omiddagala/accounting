@@ -104,7 +104,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
+					"raw": "{\n    \"id\":100,\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -331,7 +331,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"customer\": {\n        \"id\": \"11\"\n    },\n    \"user\": {\n        \"id\": \"1\"\n    },\n    \"productSize\": {\n        \"id\": \"1\"\n    },\n    \"addDate\": \"2020-04-10\",\n    \"paidDate\": \"2020-04-10\",\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
+					"raw": "{\n    \"customer\": {\n        \"id\": \"11\"\n    },\n    \"user\": {\n        \"id\": \"1\"\n    },\n    \"productSize\": {\n        \"id\": \"1\"\n    },\n    \"addDate\": \"2020-04-10\",\n    \"paidDate\": \"2020-04-10\",\n    \"factorNumber\":29,\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -476,6 +476,66 @@
 			"response": []
 		},
 		{
+			"name": "Sales  - Finalize Sales",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[29, 31]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/v1/shop/sales/finalize",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"shop",
+						"sales",
+						"finalize"
+					]
+				},
+				"description": "to update entity send \"id\"\n\nStatus : PAID, UNPAID"
+			},
+			"response": []
+		},
+		{
 			"name": "Product Size - Find By Code",
 			"request": {
 				"auth": {
@@ -499,7 +559,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "1000",
+					"raw": "100",
 					"options": {
 						"raw": {
 							"language": "json"

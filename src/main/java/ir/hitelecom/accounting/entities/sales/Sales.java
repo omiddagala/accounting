@@ -19,6 +19,7 @@ public class Sales {
     private User user;
     @ManyToOne
     private ProductSize productSize;
+    private Long price;
     private int amount;
     @Enumerated
     private Status status;
@@ -60,6 +61,14 @@ public class Sales {
 
     public void setProductSize(ProductSize productSize) {
         this.productSize = productSize;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
     }
 
     public int getAmount() {
