@@ -113,6 +113,9 @@ public class ProductService extends BaseService {
     }
 
     public ProductSize findByCode(Long id){
-        return productSizeService.findByCode(id);
+        ProductSize productSize = productSizeService.findByCode(id);
+        if (productSize == null)
+            throw new NullPointerException("productNotFound");
+        return productSize;
     }
 }

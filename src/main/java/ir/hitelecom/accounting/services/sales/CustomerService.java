@@ -27,8 +27,12 @@ public class CustomerService extends BaseService {
     public List<Customer> fetchAll(CustomerListDTO dto) {
         if (dto.getId() == null)
             return customerRepository.search(dto.getName(), dto.getFamily(), dto.getNationalCode(), dto.getMobile(), getPageable(dto.getPageableDTO()));
-        else
-            return customerRepository.findAllById(dto.getId());
+        else {
+            List<Customer> byId = customerRepository.findAllById(dto.getId());
+            if(byId.isEmpty())
+                throw new NullPointerException("customerNotFound");
+            return byId;
+        }
     }
 
     public List<CustomerOnly> fetchAllUnpaid(DateStatusDTO dto){
