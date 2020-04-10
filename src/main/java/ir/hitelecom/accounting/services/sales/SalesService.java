@@ -3,6 +3,7 @@ package ir.hitelecom.accounting.services.sales;
 import ir.hitelecom.accounting.dto.SalesListDTO;
 import ir.hitelecom.accounting.entities.sales.Sales;
 import ir.hitelecom.accounting.entities.sales.Status;
+import ir.hitelecom.accounting.entities.stock.ProductSize;
 import ir.hitelecom.accounting.repositories.UserRepository;
 import ir.hitelecom.accounting.repositories.sales.SalesRepository;
 import ir.hitelecom.accounting.repositories.stock.ProductSizeRepository;
@@ -35,12 +36,23 @@ public class SalesService extends BaseService {
 
     public Sales saveOrUpdate(Sales sales) {
         if(sales.getId() == null){
-            sales.setProductSize(productSizeRepository.findByCode(sales.getProductCode()));
-            sales.setPrice(sales.getProductSize().getProduct().getPrice());
+            ProductSize productSize = productSizeRepository.findByCode(sales.getProductCode());
+            productSize.setCount(productSize.getCount()-sales.getAmount());
+            sales.setProductSize(productSize);
+            sales.setPrice(productSize.getProduct().getPrice());
             sales.setUser(userRepository.findByUsername(getLoggedInUsername()));
             sales.setAddDateTime(LocalDateTime.now(ZoneId.systemDefault()));
             sales.setAddDate(LocalDate.now(ZoneId.systemDefault()));
+            sales.setStatus(Status.UNPAID);
             return salesRepository.save(sales);
+        }
+        Sales byId = salesRepository.findById(sales.getId()).get();
+        int diff = byId.getAmount()-sales.getAmount();
+        int newValue = byId.getProductSize().getCount()+diff;
+        if(diff!=0){
+            if (newValue<0)
+                throw new RuntimeException("productCountOutOfRage");
+            byId.getProductSize().setCount(newValue);
         }
         return salesRepository.save(sales);
     }
@@ -57,6 +69,9 @@ public class SalesService extends BaseService {
     }
 
     public void delete(Sales sales) {
+        Sales byId = salesRepository.findById(sales.getId()).get();
+        ProductSize productSize = productSizeRepository.findById(byId.getProductSize().getId()).get();
+        productSize.setCount(productSize.getCount()+byId.getAmount());
         salesRepository.delete(sales);
     }
 
