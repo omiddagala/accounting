@@ -15,8 +15,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface SalesRepository extends PagingAndSortingRepository<Sales, Long> {
-    @Query(value = "from Sales s where (:customer = null or s.customer = :customer) and (:user = null or s.user= :user)  and (:product_size = null or s.productSize =:product_size)and (:status = null or s.status =:status)")
-    List<Sales> search(@Param("customer") Customer customer, @Param("user") User user, @Param("product_size") ProductSize productSize, @Param("status") Status status, Pageable pageable);
+    @Query(value = "from Sales s where (:customer = null or s.customer = :customer) and (:user = null or s.user= :user)  and (:product_size = null or s.productSize =:product_size)and (:status = null or s.status =:status)and (CAST(:add_date AS date) = null or s.addDate =:add_date)and (CAST(:paid_date AS date) = null or s.paidDate =:paid_date)")
+    List<Sales> search(@Param("customer") Customer customer, @Param("user") User user, @Param("product_size") ProductSize productSize, @Param("status") Status status, @Param("add_date") LocalDate addDate, @Param("paid_date") LocalDate paidDate, Pageable pageable);
 
     List<Sales> findAllById(Long id);
 

@@ -5,12 +5,16 @@ import ir.hitelecom.accounting.entities.sales.Customer;
 import ir.hitelecom.accounting.entities.sales.Status;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
 
+import java.time.LocalDate;
+
 public class SalesListDTO {
     private Long id;
     private Customer customer;
     private User user;
     private ProductSize productSize;
     private Status status;
+    private LocalDate addDate;
+    private LocalDate paidDate;
     private PageableDTO pageableDTO;
 
     public Long getId() {
@@ -59,5 +63,21 @@ public class SalesListDTO {
 
     public void setPageableDTO(PageableDTO pageableDTO) {
         this.pageableDTO = pageableDTO;
+    }
+
+    public LocalDate getAddDate() {
+        return addDate;
+    }
+
+    public void setAddDate(LocalDate addDate) {
+        this.addDate = addDate;
+    }
+
+    public LocalDate getPaidDate() {
+        return paidDate;
+    }
+
+    public void setPaidDate(LocalDate paidDate) {
+        this.paidDate = paidDate;
     }
 }

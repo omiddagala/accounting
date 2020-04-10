@@ -81,7 +81,7 @@
 			"response": []
 		},
 		{
-			"name": "Customer and Card - Fetch All",
+			"name": "Customer - Fetch All",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -128,7 +128,7 @@
 			"response": []
 		},
 		{
-			"name": "Customer and Card - Fetch Unpaid",
+			"name": "Customer - Fetch Unpaid",
 			"event": [
 				{
 					"listen": "test",
@@ -188,7 +188,7 @@
 			"response": []
 		},
 		{
-			"name": "Customer and Card - Save",
+			"name": "Customer - Save",
 			"event": [
 				{
 					"listen": "test",
@@ -248,7 +248,7 @@
 			"response": []
 		},
 		{
-			"name": "Customer and Card - Delete",
+			"name": "Customer - Delete",
 			"event": [
 				{
 					"listen": "test",
@@ -331,7 +331,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"customer\": {\n        \"id\": \"5\"\n    },\n    \"user\": {\n        \"id\": \"1\"\n    },\n    \"productSize\": {\n        \"id\": \"1\"\n    },\n    \n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
+					"raw": "{\n    \"customer\": {\n        \"id\": \"11\"\n    },\n    \"user\": {\n        \"id\": \"1\"\n    },\n    \"productSize\": {\n        \"id\": \"1\"\n    },\n    \"addDate\": \"2020-04-10\",\n    \"paidDate\": \"2020-04-10\",\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -391,7 +391,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"customer\": {\r\n        \"id\":11\r\n    },\r\n    \"productCode\": 1000,\r\n    \"amount\": \"5\",\r\n    \"status\": \"UNPAID\"\r\n}",
+					"raw": "{\r\n    \"customer\": {\r\n        \"id\":11\r\n    },\r\n    \"productCode\": 1000,\r\n    \"amount\": \"5\",\r\n    \"status\": \"PAID\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -411,7 +411,7 @@
 						"save"
 					]
 				},
-				"description": "to update entity send \"id\"\n\nStatus : FINISHED, IN_CART"
+				"description": "to update entity send \"id\"\n\nStatus : PAID, UNPAID"
 			},
 			"response": []
 		},

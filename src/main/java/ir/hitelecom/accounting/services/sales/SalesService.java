@@ -28,7 +28,7 @@ public class SalesService extends BaseService {
 
     public List<Sales> fetchAll(SalesListDTO dto) {
         if (dto.getId() == null)
-            return salesRepository.search(dto.getCustomer(), dto.getUser(), dto.getProductSize(), dto.getStatus(), getPageable(dto.getPageableDTO()));
+            return salesRepository.search(dto.getCustomer(), dto.getUser(), dto.getProductSize(), dto.getStatus(), dto.getAddDate(), dto.getPaidDate(), getPageable(dto.getPageableDTO()));
         else
             return salesRepository.findAllById(dto.getId());
     }
@@ -36,11 +36,10 @@ public class SalesService extends BaseService {
     public Sales saveOrUpdate(Sales sales) {
         sales.setProductSize(productSizeRepository.findByCode(sales.getProductCode()));
         sales.setUser(userRepository.findByUsername(getLoggedInUsername()));
-        if(sales.getStatus().equals(Status.UNPAID)){
+        if (sales.getStatus().equals(Status.UNPAID)) {
             sales.setAddDateTime(LocalDateTime.now(ZoneId.systemDefault()));
             sales.setAddDate(LocalDate.now(ZoneId.systemDefault()));
-        }
-        else{
+        } else {
             sales.setPaidDateTime(LocalDateTime.now(ZoneId.systemDefault()));
             sales.setPaidDate(LocalDate.now(ZoneId.systemDefault()));
         }
