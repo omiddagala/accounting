@@ -1,9 +1,8 @@
 package ir.hitelecom.accounting.services.sales;
 
 import ir.hitelecom.accounting.dto.CustomerListDTO;
-import ir.hitelecom.accounting.dto.DateStatusDTO;
+import ir.hitelecom.accounting.dto.DailyCustomerListDTO;
 import ir.hitelecom.accounting.entities.sales.Customer;
-import ir.hitelecom.accounting.entities.sales.CustomerOnly;
 import ir.hitelecom.accounting.repositories.sales.CustomerRepository;
 import ir.hitelecom.accounting.repositories.sales.SalesRepository;
 import ir.hitelecom.accounting.services.BaseService;
@@ -14,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -35,12 +35,14 @@ public class CustomerService extends BaseService {
         }
     }
 
-    public List<CustomerOnly> fetchAllUnpaid(DateStatusDTO dto){
-        List<CustomerOnly> result = salesRepository.findCustomerDistinctByStatusAndAddDate(dto.getStatus(),dto.getDate());
+    public List<Customer> fetchAllUnpaid(DailyCustomerListDTO dto){
+        List<Customer> result = salesRepository.findCustomerId(dto.getName(),dto.getFamily(),dto.getNationalCode(),dto.getMobile(),dto.getStatus(),dto.getAddDate(),dto.getPaidDate());
         Pageable pageable = getPageable(dto.getPageableDTO());
         int start =(int) pageable.getOffset();
         int end =(start + pageable.getPageSize()) > result.size() ? result.size() : (start + pageable.getPageSize());
-        Page<CustomerOnly> pages = new PageImpl<CustomerOnly>(result.subList(start, end), pageable, result.size());
+        if(end < start)
+            return new ArrayList<>();
+        Page<Customer> pages = new PageImpl<>(result.subList(start, end), pageable, result.size());
         return pages.getContent();
     }
 

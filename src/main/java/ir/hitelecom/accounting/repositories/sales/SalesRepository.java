@@ -2,7 +2,6 @@ package ir.hitelecom.accounting.repositories.sales;
 
 import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.sales.Customer;
-import ir.hitelecom.accounting.entities.sales.CustomerOnly;
 import ir.hitelecom.accounting.entities.sales.Sales;
 import ir.hitelecom.accounting.entities.sales.Status;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
@@ -20,5 +19,13 @@ public interface SalesRepository extends PagingAndSortingRepository<Sales, Long>
 
     List<Sales> findAllById(Long id);
 
-    List<CustomerOnly> findCustomerDistinctByStatusAndAddDate(Status status, LocalDate addDate);
+    @Query("select distinct s.customer from Sales s where" +
+            " (:name = null or s.customer.name like %:name%) " +
+            "and (:family = null or s.customer.family like %:family%) " +
+            "and (:status = null or s.status =:status) " +
+            "and (:national_code = null or s.customer.nationalCode like %:national_code%)" +
+            "and (:mobile = null or s.customer.mobile like %:mobile%)" +
+            "and (CAST(:add_date AS date) = null or s.addDate =:add_date)" +
+            "and (CAST(:paid_date AS date) = null or s.paidDate =:paid_date)")
+    List<Customer> findCustomerId(@Param("name") String name, @Param("family") String family, @Param("national_code") String nationalCode, @Param("mobile") String mobile, @Param("status") Status status, @Param("add_date") LocalDate addDate, @Param("paid_date") LocalDate paidDate);
 }
