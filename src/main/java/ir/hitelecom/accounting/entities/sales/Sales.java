@@ -4,6 +4,7 @@ import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,8 +24,10 @@ public class Sales {
     private Status status;
     @Transient
     private Long productCode;
-    private LocalDateTime  inCartDate;
-    private LocalDateTime finishedDate;
+    private LocalDateTime addDateTime;
+    private LocalDate addDate;
+    private LocalDateTime paidDateTime;
+    private LocalDate paidDate;
 
     public Long getId() {
         return id;
@@ -82,19 +85,35 @@ public class Sales {
         this.productCode = productCode;
     }
 
-    public LocalDateTime getInCartDate() {
-        return inCartDate;
+    public LocalDateTime getAddDateTime() {
+        return addDateTime;
     }
 
-    public void setInCartDate(LocalDateTime inCartDate) {
-        this.inCartDate = inCartDate;
+    public void setAddDateTime(LocalDateTime addDateTime) {
+        this.addDateTime = addDateTime;
     }
 
-    public LocalDateTime getFinishedDate() {
-        return finishedDate;
+    public LocalDate getAddDate() {
+        return addDate;
     }
 
-    public void setFinishedDate(LocalDateTime finishedDate) {
-        this.finishedDate = finishedDate;
+    public void setAddDate(LocalDate addDate) {
+        this.addDate = addDate;
+    }
+
+    public LocalDateTime getPaidDateTime() {
+        return paidDateTime;
+    }
+
+    public void setPaidDateTime(LocalDateTime paidDateTime) {
+        this.paidDateTime = paidDateTime;
+    }
+
+    public LocalDate getPaidDate() {
+        return paidDate;
+    }
+
+    public void setPaidDate(LocalDate paidDate) {
+        this.paidDate = paidDate;
     }
 }

@@ -2,6 +2,7 @@ package ir.hitelecom.accounting.repositories.sales;
 
 import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.sales.Customer;
+import ir.hitelecom.accounting.entities.sales.CustomerOnly;
 import ir.hitelecom.accounting.entities.sales.Sales;
 import ir.hitelecom.accounting.entities.sales.Status;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
@@ -10,6 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface SalesRepository extends PagingAndSortingRepository<Sales, Long> {
@@ -17,4 +19,6 @@ public interface SalesRepository extends PagingAndSortingRepository<Sales, Long>
     List<Sales> search(@Param("customer") Customer customer, @Param("user") User user, @Param("product_size") ProductSize productSize, @Param("status") Status status, Pageable pageable);
 
     List<Sales> findAllById(Long id);
+
+    List<CustomerOnly> findCustomerDistinctByStatusAndAddDate(Status status, LocalDate addDate);
 }

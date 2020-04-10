@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
@@ -35,10 +36,14 @@ public class SalesService extends BaseService {
     public Sales saveOrUpdate(Sales sales) {
         sales.setProductSize(productSizeRepository.findByCode(sales.getProductCode()));
         sales.setUser(userRepository.findByUsername(getLoggedInUsername()));
-        if(sales.getStatus().equals(Status.IN_CART))
-            sales.setInCartDate(LocalDateTime.now(ZoneId.systemDefault()));
-        else
-            sales.setFinishedDate(LocalDateTime.now(ZoneId.systemDefault()));
+        if(sales.getStatus().equals(Status.UNPAID)){
+            sales.setAddDateTime(LocalDateTime.now(ZoneId.systemDefault()));
+            sales.setAddDate(LocalDate.now(ZoneId.systemDefault()));
+        }
+        else{
+            sales.setPaidDateTime(LocalDateTime.now(ZoneId.systemDefault()));
+            sales.setPaidDate(LocalDate.now(ZoneId.systemDefault()));
+        }
         return salesRepository.save(sales);
     }
 
