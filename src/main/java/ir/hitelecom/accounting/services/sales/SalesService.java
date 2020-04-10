@@ -46,6 +46,17 @@ public class SalesService extends BaseService {
         return salesRepository.save(sales);
     }
 
+    public void finalizeFactor(List<Long> ids){
+        Long factorNumber = ids.get(0);
+        for (Long id:ids) {
+            Sales sales = salesRepository.findById(id).get();
+            sales.setStatus(Status.PAID);
+            sales.setFactorNumber(factorNumber);
+            sales.setPaidDateTime(LocalDateTime.now(ZoneId.systemDefault()));
+            sales.setPaidDate(LocalDate.now(ZoneId.systemDefault()));
+        }
+    }
+
     public void delete(Sales sales) {
         salesRepository.delete(sales);
     }

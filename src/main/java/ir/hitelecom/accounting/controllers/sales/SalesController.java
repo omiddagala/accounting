@@ -33,5 +33,10 @@ public class SalesController {
         salesService.delete(sales);
     }
 
+    @PostMapping("/finalize")
+    @ResponseBody
+    public void finalize(@RequestBody List<Long> ids) {
+         salesService.finalizeFactor(ids);
+    }
 
 }

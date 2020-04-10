@@ -28,6 +28,7 @@ public class Sales {
     private LocalDate addDate;
     private LocalDateTime paidDateTime;
     private LocalDate paidDate;
+    private Long factorNumber;
 
     public Long getId() {
         return id;
@@ -115,5 +116,13 @@ public class Sales {
 
     public void setPaidDate(LocalDate paidDate) {
         this.paidDate = paidDate;
+    }
+
+    public Long getFactorNumber() {
+        return factorNumber;
+    }
+
+    public void setFactorNumber(Long factorNumber) {
+        this.factorNumber = factorNumber;
     }
 }
