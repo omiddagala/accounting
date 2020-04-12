@@ -30,6 +30,8 @@ public class Sales {
     private LocalDateTime paidDateTime;
     private LocalDate paidDate;
     private Long factorNumber;
+    @ManyToOne
+    private BankAccount bankAccount;
 
     public Long getId() {
         return id;
@@ -65,6 +67,14 @@ public class Sales {
 
     public Long getPrice() {
         return price;
+    }
+
+    public BankAccount getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
     }
 
     public void setPrice(Long price) {

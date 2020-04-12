@@ -571,7 +571,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "[29, 31]",
+					"raw": "{\n    \"ids\": [\n       48\n    ],\n    \"bankAccount\": {\n        \"id\": 62,\n        \"bank\": \"meli\",\n        \"accountNumber\": \"6037123412341234\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"

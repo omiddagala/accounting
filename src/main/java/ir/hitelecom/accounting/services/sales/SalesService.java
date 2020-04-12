@@ -1,5 +1,6 @@
 package ir.hitelecom.accounting.services.sales;
 
+import ir.hitelecom.accounting.dto.FinalizeFactorDTO;
 import ir.hitelecom.accounting.dto.SalesListDTO;
 import ir.hitelecom.accounting.entities.sales.Sales;
 import ir.hitelecom.accounting.entities.sales.Status;
@@ -57,10 +58,11 @@ public class SalesService extends BaseService {
         return salesRepository.save(sales);
     }
 
-    public void finalizeFactor(List<Long> ids){
-        Long factorNumber = ids.get(0);
-        for (Long id:ids) {
+    public void finalizeFactor(FinalizeFactorDTO dto){
+        Long factorNumber = dto.getIds().get(0);
+        for (Long id:dto.getIds()) {
             Sales sales = salesRepository.findById(id).get();
+            sales.setBankAccount(dto.getBankAccount());
             sales.setStatus(Status.PAID);
             sales.setFactorNumber(factorNumber);
             sales.setPaidDateTime(LocalDateTime.now(ZoneId.systemDefault()));

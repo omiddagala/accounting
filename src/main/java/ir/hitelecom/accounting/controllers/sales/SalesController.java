@@ -1,5 +1,6 @@
 package ir.hitelecom.accounting.controllers.sales;
 
+import ir.hitelecom.accounting.dto.FinalizeFactorDTO;
 import ir.hitelecom.accounting.dto.SalesListDTO;
 import ir.hitelecom.accounting.entities.sales.Sales;
 import ir.hitelecom.accounting.services.sales.SalesService;
@@ -35,8 +36,8 @@ public class SalesController {
 
     @PostMapping("/finalize")
     @ResponseBody
-    public void finalize(@RequestBody List<Long> ids) {
-         salesService.finalizeFactor(ids);
+    public void finalize(@RequestBody FinalizeFactorDTO dto) {
+         salesService.finalizeFactor(dto);
     }
 
 }
