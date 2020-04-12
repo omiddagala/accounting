@@ -35,7 +35,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
     @ExceptionHandler(value = NullPointerException.class)
     protected ResponseEntity<Object> handleBusinessException(NullPointerException exception, WebRequest request) {
-        List<String> exceptions = Arrays.asList("productNotFound", "customerNotFound");
+        List<String> exceptions = Arrays.asList("productNotFound", "customerNotFound","bankAccountNotFound");
         if (exceptions.contains(exception.getMessage()))
             return handleExceptionInternal(exception, getErrorMessage(exception.getMessage()), new HttpHeaders(), HttpStatus.NOT_FOUND, request);
         throw exception;
