@@ -36,8 +36,8 @@ public class SalesController {
 
     @PostMapping("/finalize")
     @ResponseBody
-    public void finalize(@RequestBody FinalizeFactorDTO dto) {
-         salesService.finalizeFactor(dto);
+    public Long finalize(@RequestBody FinalizeFactorDTO dto) {
+        return salesService.finalizeFactor(dto);
     }
 
 }

@@ -58,7 +58,7 @@ public class SalesService extends BaseService {
         return salesRepository.save(sales);
     }
 
-    public void finalizeFactor(FinalizeFactorDTO dto){
+    public Long finalizeFactor(FinalizeFactorDTO dto){
         Long factorNumber = dto.getIds().get(0);
         for (Long id:dto.getIds()) {
             Sales sales = salesRepository.findById(id).get();
@@ -68,6 +68,7 @@ public class SalesService extends BaseService {
             sales.setPaidDateTime(LocalDateTime.now(ZoneId.systemDefault()));
             sales.setPaidDate(LocalDate.now(ZoneId.systemDefault()));
         }
+        return factorNumber;
     }
 
     public void delete(Sales sales) {
