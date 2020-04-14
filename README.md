@@ -1,2 +1,3 @@
-# accounting
-test 1
+# Accounting
+
+`mvn spring-boot:run`

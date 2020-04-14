@@ -28,4 +28,7 @@ public interface SalesRepository extends PagingAndSortingRepository<Sales, Long>
             "and (CAST(:add_date AS date) = null or s.addDate =:add_date)" +
             "and (CAST(:paid_date AS date) = null or s.paidDate =:paid_date)")
     List<Customer> findCustomerId(@Param("name") String name, @Param("family") String family, @Param("national_code") String nationalCode, @Param("mobile") String mobile, @Param("status") Status status, @Param("add_date") LocalDate addDate, @Param("paid_date") LocalDate paidDate);
+
+    @Query("select distinct s.factorNumber from Sales s where (:customer = null or s.customer =:customer)")
+    List<Long> findCustomerFactorNumbers(@Param("customer")Customer customer);
 }

@@ -1,5 +1,6 @@
 package ir.hitelecom.accounting.services.sales;
 
+import ir.hitelecom.accounting.dto.CustomerDTO;
 import ir.hitelecom.accounting.dto.CustomerListDTO;
 import ir.hitelecom.accounting.dto.DailyCustomerListDTO;
 import ir.hitelecom.accounting.entities.sales.Customer;
@@ -52,5 +53,16 @@ public class CustomerService extends BaseService {
 
     public void delete(Customer customer) {
         customerRepository.delete(customer);
+    }
+
+    public List<Long> fetchFactorNumber(CustomerDTO dto) {
+        List<Long> result = salesRepository.findCustomerFactorNumbers(dto.getCustomer());
+        Pageable pageable = getPageable(dto.getPageableDTO());
+        int start =(int) pageable.getOffset();
+        int end =(start + pageable.getPageSize()) > result.size() ? result.size() : (start + pageable.getPageSize());
+        if(end < start)
+            return new ArrayList<>();
+        Page<Long> pages = new PageImpl<>(result.subList(start, end), pageable, result.size());
+        return pages.getContent();
     }
 }

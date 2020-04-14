@@ -1,5 +1,6 @@
 package ir.hitelecom.accounting.controllers.sales;
 
+import ir.hitelecom.accounting.dto.CustomerDTO;
 import ir.hitelecom.accounting.dto.CustomerListDTO;
 import ir.hitelecom.accounting.dto.DailyCustomerListDTO;
 import ir.hitelecom.accounting.entities.sales.Customer;
@@ -26,6 +27,12 @@ public class CustomerController {
     @ResponseBody
     public List<Customer> fetchAllUnpaid(@RequestBody DailyCustomerListDTO dto) {
         return customerService.fetchAllUnpaid(dto);
+    }
+
+    @PostMapping("/factorNumber")
+    @ResponseBody
+    public List<Long> fetchFactorNumber(@RequestBody CustomerDTO dto) {
+        return customerService.fetchFactorNumber(dto);
     }
 
     @PostMapping("/save")
