@@ -30,15 +30,17 @@ public class SalesService extends BaseService {
 
     public List<Sales> fetchAll(SalesListDTO dto) {
         if (dto.getId() == null)
-            return salesRepository.search(dto.getCustomer(), dto.getUser(), dto.getProductSize(), dto.getStatus(), dto.getAddDate(), dto.getPaidDate(),dto.getFactorNumber(), getPageable(dto.getPageableDTO()));
+            return salesRepository.search(dto.getCustomer(), dto.getUser(), dto.getProductSize(), dto.getStatus(), dto.getAddDate(), dto.getPaidDate(), dto.getFactorNumber(), getPageable(dto.getPageableDTO()));
         else
             return salesRepository.findAllById(dto.getId());
     }
 
     public Sales saveOrUpdate(Sales sales) {
-        if(sales.getId() == null){
+        if (sales.getId() == null) {
             ProductSize productSize = productSizeRepository.findByCode(sales.getProductCode());
-            productSize.setCount(productSize.getCount()-sales.getAmount());
+            if (productSize.getCount() < sales.getAmount())
+                throw new RuntimeException("productCountOutOfRage");
+            productSize.setCount(productSize.getCount() - sales.getAmount());
             sales.setProductSize(productSize);
             sales.setPrice(productSize.getProduct().getPrice());
             sales.setUser(userRepository.findByUsername(getLoggedInUsername()));
@@ -48,19 +50,19 @@ public class SalesService extends BaseService {
             return salesRepository.save(sales);
         }
         Sales byId = salesRepository.findById(sales.getId()).get();
-        int diff = byId.getAmount()-sales.getAmount();
-        int newValue = byId.getProductSize().getCount()+diff;
-        if(diff!=0){
-            if (newValue<0)
+        int diff = byId.getAmount() - sales.getAmount();
+        int newValue = byId.getProductSize().getCount() + diff;
+        if (diff != 0) {
+            if (newValue < 0)
                 throw new RuntimeException("productCountOutOfRage");
             byId.getProductSize().setCount(newValue);
         }
         return salesRepository.save(sales);
     }
 
-    public Long finalizeFactor(FinalizeFactorDTO dto){
+    public Long finalizeFactor(FinalizeFactorDTO dto) {
         Long factorNumber = dto.getIds().get(0);
-        for (Long id:dto.getIds()) {
+        for (Long id : dto.getIds()) {
             Sales sales = salesRepository.findById(id).get();
             sales.setBankAccount(dto.getBankAccount());
             sales.setStatus(Status.PAID);
@@ -74,8 +76,7 @@ public class SalesService extends BaseService {
     public void delete(Sales sales) {
         Sales byId = salesRepository.findById(sales.getId()).get();
         ProductSize productSize = productSizeRepository.findById(byId.getProductSize().getId()).get();
-        productSize.setCount(productSize.getCount()+byId.getAmount());
+        productSize.setCount(productSize.getCount() + byId.getAmount());
         salesRepository.delete(sales);
     }
-
 }

@@ -39,5 +39,4 @@ public class SalesController {
     public Long finalize(@RequestBody FinalizeFactorDTO dto) {
         return salesService.finalizeFactor(dto);
     }
-
 }

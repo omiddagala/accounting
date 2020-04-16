@@ -22,5 +22,4 @@ public interface ProductSizeRepository extends CrudRepository<ProductSize,Long> 
     List<ProductSize> findProductByProductNameAndProductOwner(String name, User owner);
 
     ProductSize findByCode(Long code);
-
 }

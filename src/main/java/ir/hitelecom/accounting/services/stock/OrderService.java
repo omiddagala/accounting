@@ -11,7 +11,6 @@ import ir.hitelecom.accounting.repositories.stock.OrderRepository;
 import ir.hitelecom.accounting.repositories.stock.ProductRepository;
 import ir.hitelecom.accounting.repositories.stock.ProductSizeRepository;
 import ir.hitelecom.accounting.services.BaseService;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -105,5 +104,4 @@ public class OrderService extends BaseService {
             orderRepository.delete(fetchedOrder);
         }
     }
-
 }

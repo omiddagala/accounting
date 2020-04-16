@@ -19,7 +19,7 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
-    show-sql: true
+    show-sql: false
   datasource:
     url: jdbc:postgresql://127.0.0.1/accounting
     username: postgres

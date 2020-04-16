@@ -13,5 +13,4 @@ public interface CustomerRepository extends PagingAndSortingRepository<Customer,
     List<Customer> search(@Param("name") String name, @Param("family") String family, @Param("national_code") String nationalCode, @Param("mobile") String mobile, Pageable pageable);
 
     List<Customer> findAllById(Long id);
-
 }

@@ -37,5 +37,4 @@ public class UserManagementController {
     public User findOne(@RequestBody User user) {
         return userService.findOne(user);
     }
-
 }

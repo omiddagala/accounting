@@ -223,7 +223,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"customer\": {\n        \"id\": 11\n    },\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 20,\n        \"direction\": \"desc\",\n        \"sortBy\": \"id\"\n    }\n}",
+					"raw": "{\n    \"id\": 11\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -451,7 +451,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"customer\": {\r\n        \"id\":11\r\n    },\r\n    \"productCode\": 1000,\r\n    \"amount\": \"5\"\r\n}",
+					"raw": "{\r\n    \"customer\": {\r\n        \"id\":11\r\n    },\r\n    \"productCode\": 1000,\r\n    \"amount\": \"500\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -864,6 +864,102 @@
 						"shop",
 						"product",
 						"findByCode"
+					]
+				},
+				"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
+			},
+			"response": []
+		},
+		{
+			"name": "Product Size - save",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"AAA\",\n\t\"description\":\"bbb\",\n\t\"group\":{\n\t\t\"id\":1\n\t},\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/v1/shop/product/save",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"shop",
+						"product",
+						"save"
+					]
+				},
+				"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
+			},
+			"response": []
+		},
+		{
+			"name": "Product Size - Fetch All",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/v1/shop/product/list",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"shop",
+						"product",
+						"list"
 					]
 				},
 				"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
