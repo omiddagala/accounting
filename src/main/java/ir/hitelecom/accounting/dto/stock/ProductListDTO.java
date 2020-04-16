@@ -1,4 +1,6 @@
-package ir.hitelecom.accounting.dto;
+package ir.hitelecom.accounting.dto.stock;
+
+import ir.hitelecom.accounting.dto.PageableDTO;
 
 public class ProductListDTO {
 

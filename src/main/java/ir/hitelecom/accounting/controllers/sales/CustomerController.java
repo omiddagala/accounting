@@ -1,8 +1,7 @@
 package ir.hitelecom.accounting.controllers.sales;
 
-import ir.hitelecom.accounting.dto.CustomerDTO;
-import ir.hitelecom.accounting.dto.CustomerListDTO;
-import ir.hitelecom.accounting.dto.DailyCustomerListDTO;
+import ir.hitelecom.accounting.dto.sales.CustomerListDTO;
+import ir.hitelecom.accounting.dto.sales.DailyCustomerListDTO;
 import ir.hitelecom.accounting.entities.sales.Customer;
 import ir.hitelecom.accounting.services.sales.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +30,8 @@ public class CustomerController {
 
     @PostMapping("/factorNumber")
     @ResponseBody
-    public List<Long> fetchFactorNumber(@RequestBody CustomerDTO dto) {
-        return customerService.fetchFactorNumber(dto);
+    public List<Long> fetchFactorNumber(@RequestBody Customer customer) {
+        return customerService.fetchFactorNumber(customer);
     }
 
     @PostMapping("/save")

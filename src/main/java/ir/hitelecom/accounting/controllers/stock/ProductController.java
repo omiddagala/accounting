@@ -1,7 +1,7 @@
 package ir.hitelecom.accounting.controllers.stock;
 
-import ir.hitelecom.accounting.dto.IdDTO;
-import ir.hitelecom.accounting.dto.ProductListDTO;
+import ir.hitelecom.accounting.dto.stock.IdDTO;
+import ir.hitelecom.accounting.dto.stock.ProductListDTO;
 import ir.hitelecom.accounting.entities.stock.Product;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
 import ir.hitelecom.accounting.services.stock.ProductService;

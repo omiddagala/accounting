@@ -1,7 +1,7 @@
 package ir.hitelecom.accounting.controllers.sales;
 
-import ir.hitelecom.accounting.dto.FinalizeFactorDTO;
-import ir.hitelecom.accounting.dto.SalesListDTO;
+import ir.hitelecom.accounting.dto.sales.FinalizeFactorDTO;
+import ir.hitelecom.accounting.dto.sales.SalesListDTO;
 import ir.hitelecom.accounting.entities.sales.Sales;
 import ir.hitelecom.accounting.services.sales.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;

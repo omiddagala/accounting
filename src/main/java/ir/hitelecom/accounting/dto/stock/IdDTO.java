@@ -1,4 +1,4 @@
-package ir.hitelecom.accounting.dto;
+package ir.hitelecom.accounting.dto.stock;
 
 public class IdDTO {
     private Long id;

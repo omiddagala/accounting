@@ -1,4 +1,4 @@
-package ir.hitelecom.accounting.dto;
+package ir.hitelecom.accounting.dto.sales;
 
 import ir.hitelecom.accounting.entities.sales.BankAccount;
 

@@ -1,6 +1,6 @@
 package ir.hitelecom.accounting.controllers.sales;
 
-import ir.hitelecom.accounting.dto.BankAccountListDTO;
+import ir.hitelecom.accounting.dto.sales.BankAccountListDTO;
 import ir.hitelecom.accounting.entities.sales.BankAccount;
 import ir.hitelecom.accounting.services.sales.BankAccountService;
 import org.springframework.beans.factory.annotation.Autowired;

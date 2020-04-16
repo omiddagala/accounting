@@ -1,6 +1,6 @@
 package ir.hitelecom.accounting.services.sales;
 
-import ir.hitelecom.accounting.dto.BankAccountListDTO;
+import ir.hitelecom.accounting.dto.sales.BankAccountListDTO;
 import ir.hitelecom.accounting.entities.sales.BankAccount;
 import ir.hitelecom.accounting.repositories.sales.BankAccountRepository;
 import ir.hitelecom.accounting.services.BaseService;

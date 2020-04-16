@@ -1,4 +1,6 @@
-package ir.hitelecom.accounting.dto;
+package ir.hitelecom.accounting.dto.sales;
+
+import ir.hitelecom.accounting.dto.PageableDTO;
 
 public class CustomerListDTO {
     private Long id;
