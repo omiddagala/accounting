@@ -1,7 +1,6 @@
 package ir.hitelecom.accounting.entities.stock;
 
 import ir.hitelecom.accounting.entities.User;
-import ir.hitelecom.accounting.entities.stock.Reservoir;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -22,6 +21,7 @@ public class Order {
     private User submitter;
     @ManyToOne
     private Product product;
+    @Lob
     private String orders;
     @Transient
     private List<Size> listOrders;
