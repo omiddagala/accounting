@@ -1,6 +1,7 @@
 package ir.hitelecom.accounting.services.sales;
 
 import ir.hitelecom.accounting.dto.sales.FinalizeFactorDTO;
+import ir.hitelecom.accounting.dto.sales.ReportDTO;
 import ir.hitelecom.accounting.dto.sales.SalesListDTO;
 import ir.hitelecom.accounting.entities.sales.Sales;
 import ir.hitelecom.accounting.entities.sales.Status;
@@ -71,6 +72,13 @@ public class SalesService extends BaseService {
             sales.setPaidDate(LocalDate.now(ZoneId.systemDefault()));
         }
         return factorNumber;
+    }
+
+    public ReportDTO report(ReportDTO dto) {
+        ReportDTO result = new ReportDTO();
+        result.setSales(salesRepository.report(dto.getCustomer(), dto.getUser(), dto.getProductSize(), Status.PAID, dto.getFrom(), dto.getTo(), dto.getBankAccount(), getPageable(dto.getPageableDTO())));
+        result.setTotal(salesRepository.reportSum(dto.getCustomer(), dto.getUser(), dto.getProductSize(), Status.PAID, dto.getFrom(), dto.getTo(), dto.getBankAccount()));
+        return result;
     }
 
     public void delete(Sales sales) {
