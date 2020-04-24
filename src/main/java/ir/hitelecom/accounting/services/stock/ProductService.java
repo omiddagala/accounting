@@ -44,9 +44,10 @@ public class ProductService extends BaseService {
 
     public void saveOrUpdate(Product product) {
         boolean isEdit = product.getId() != null;
-        if (!isEdit && productRepository.existsByName(product.getName())) {
+        if (isEdit && !productRepository.findById(product.getId()).get().getName().equals(product.getName()) && productRepository.existsByName(product.getName()))
             throw new RuntimeException(getErrorMessage("nameExists"));
-        }
+        if (!isEdit && productRepository.existsByName(product.getName()))
+            throw new RuntimeException(getErrorMessage("nameExists"));
         User user = userRepository.findByUsername(getLoggedInUsername());
         product.setOwner(user.getParent());
         product.setUser(user);
@@ -112,7 +113,7 @@ public class ProductService extends BaseService {
         return new ArrayList<>(result.values());
     }
 
-    public ProductSize findByCode(Long id){
+    public ProductSize findByCode(Long id) {
         ProductSize productSize = productSizeService.findByCode(id);
         if (productSize == null)
             throw new NullPointerException("productNotFound");
