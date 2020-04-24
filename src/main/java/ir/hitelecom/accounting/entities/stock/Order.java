@@ -1,6 +1,7 @@
 package ir.hitelecom.accounting.entities.stock;
 
 import ir.hitelecom.accounting.entities.User;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -22,6 +23,7 @@ public class Order {
     @ManyToOne
     private Product product;
     @Lob
+    @Type(type = "org.hibernate.type.TextType")
     private String orders;
     @Transient
     private List<Size> listOrders;

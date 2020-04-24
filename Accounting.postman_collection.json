@@ -1013,6 +1013,54 @@
 				"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
 			},
 			"response": []
+		},
+		{
+			"name": "Order - Fetch All",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9000/v1/shop/order/fetch",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"v1",
+						"shop",
+						"order",
+						"fetch"
+					]
+				},
+				"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
