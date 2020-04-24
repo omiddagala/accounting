@@ -43,10 +43,10 @@ public class ProductService extends BaseService {
     }
 
     public void saveOrUpdate(Product product) {
-        if (productRepository.existsByName(product.getName())) {
+        boolean isEdit = product.getId() != null;
+        if (!isEdit && productRepository.existsByName(product.getName())) {
             throw new RuntimeException(getErrorMessage("nameExists"));
         }
-        boolean isEdit = product.getId() != null;
         User user = userRepository.findByUsername(getLoggedInUsername());
         product.setOwner(user.getParent());
         product.setUser(user);
