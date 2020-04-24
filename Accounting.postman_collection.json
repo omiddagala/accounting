@@ -679,7 +679,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"from\": \"2020-04-12\",\n\t\"to\": \"2020-04-15\",\n\t\"user\":{\n\t\t\"id\":1\n\t},\n\t\"customer\":{\n\t\t\"id\":11\n\t},\n\t\"productSize\":{\n\t\t\"id\":1\n\t},\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
+					"raw": "{\n\t\"from\": \"2020-04-12\",\n\t\"to\": \"2020-04-15\",\n\t\"user\":{\n\t\t\"id\":1\n\t},\n\t\"customer\":{\n\t\t\"id\":11\n\t},\n\t\"productSize\":{\n\t\t\"id\":1\n\t},\n\t\"bankAccount\":{\n\t\t\"id\":62\n\t},\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"

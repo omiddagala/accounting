@@ -4,11 +4,9 @@ import ir.hitelecom.accounting.dto.PageableDTO;
 import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.sales.BankAccount;
 import ir.hitelecom.accounting.entities.sales.Customer;
-import ir.hitelecom.accounting.entities.sales.Sales;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class ReportDTO {
     private User user;
@@ -17,8 +15,6 @@ public class ReportDTO {
     private LocalDate from;
     private LocalDate to;
     private BankAccount bankAccount;
-    private List<Sales> sales;
-    private Long total;
     private PageableDTO pageableDTO;
 
     public User getUser() {
@@ -67,22 +63,6 @@ public class ReportDTO {
 
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
-    }
-
-    public List<Sales> getSales() {
-        return sales;
-    }
-
-    public void setSales(List<Sales> sales) {
-        this.sales = sales;
-    }
-
-    public Long getTotal() {
-        return total;
-    }
-
-    public void setTotal(Long total) {
-        this.total = total;
     }
 
     public PageableDTO getPageableDTO() {

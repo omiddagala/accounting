@@ -2,6 +2,7 @@ package ir.hitelecom.accounting.controllers.sales;
 
 import ir.hitelecom.accounting.dto.sales.FinalizeFactorDTO;
 import ir.hitelecom.accounting.dto.sales.ReportDTO;
+import ir.hitelecom.accounting.dto.sales.ReportResultDTO;
 import ir.hitelecom.accounting.dto.sales.SalesListDTO;
 import ir.hitelecom.accounting.entities.sales.Sales;
 import ir.hitelecom.accounting.services.sales.SalesService;
@@ -43,7 +44,7 @@ public class SalesController {
 
     @PostMapping("/report")
     @ResponseBody
-    public ReportDTO fetchAll(@RequestBody ReportDTO dto) {
+    public ReportResultDTO fetchAll(@RequestBody ReportDTO dto) {
         return salesService.report(dto);
     }
 }

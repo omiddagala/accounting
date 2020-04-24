@@ -2,6 +2,7 @@ package ir.hitelecom.accounting.services.sales;
 
 import ir.hitelecom.accounting.dto.sales.FinalizeFactorDTO;
 import ir.hitelecom.accounting.dto.sales.ReportDTO;
+import ir.hitelecom.accounting.dto.sales.ReportResultDTO;
 import ir.hitelecom.accounting.dto.sales.SalesListDTO;
 import ir.hitelecom.accounting.entities.sales.Sales;
 import ir.hitelecom.accounting.entities.sales.Status;
@@ -74,8 +75,10 @@ public class SalesService extends BaseService {
         return factorNumber;
     }
 
-    public ReportDTO report(ReportDTO dto) {
-        ReportDTO result = new ReportDTO();
+    public ReportResultDTO report(ReportDTO dto) {
+        ReportResultDTO result = new ReportResultDTO();
+        if (dto.getFrom() == null)
+            dto.setFrom( LocalDate.of(1, 1, 1));
         result.setSales(salesRepository.report(dto.getCustomer(), dto.getUser(), dto.getProductSize(), Status.PAID, dto.getFrom(), dto.getTo(), dto.getBankAccount(), getPageable(dto.getPageableDTO())));
         result.setTotal(salesRepository.reportSum(dto.getCustomer(), dto.getUser(), dto.getProductSize(), Status.PAID, dto.getFrom(), dto.getTo(), dto.getBankAccount()));
         return result;
