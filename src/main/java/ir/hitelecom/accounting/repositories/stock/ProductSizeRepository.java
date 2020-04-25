@@ -22,4 +22,8 @@ public interface ProductSizeRepository extends CrudRepository<ProductSize,Long> 
     List<ProductSize> findProductByProductNameAndProductOwner(String name, User owner);
 
     ProductSize findByCode(Long code);
+
+    @Query(value = "from ProductSize ps where ( ps.product.reservoir = :reservoir) and (ps.code= :code)")
+    ProductSize findByReservoir(@Param("reservoir") Reservoir reservoir, @Param("code") Long code);
+
 }

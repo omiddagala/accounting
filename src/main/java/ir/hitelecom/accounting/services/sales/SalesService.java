@@ -39,7 +39,7 @@ public class SalesService extends BaseService {
 
     public Sales saveOrUpdate(Sales sales) {
         if (sales.getId() == null) {
-            ProductSize productSize = productSizeRepository.findByCode(sales.getProductCode());
+            ProductSize productSize = productSizeRepository.findByReservoir(userRepository.findByUsername(getLoggedInUsername()).getReservoir(),sales.getProductCode());
             if (productSize.getCount() < sales.getAmount())
                 throw new RuntimeException("productCountOutOfRage");
             productSize.setCount(productSize.getCount() - sales.getAmount());
