@@ -8,6 +8,7 @@ import ir.hitelecom.accounting.entities.stock.ProductSize;
 import ir.hitelecom.accounting.repositories.UserRepository;
 import ir.hitelecom.accounting.repositories.stock.GroupRepository;
 import ir.hitelecom.accounting.repositories.stock.ProductRepository;
+import ir.hitelecom.accounting.repositories.stock.ProductSizeRepository;
 import ir.hitelecom.accounting.repositories.stock.TimelineRepository;
 import ir.hitelecom.accounting.services.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class ProductService extends BaseService {
     private TimelineRepository timelineRepository;
     @Autowired
     private GroupRepository groupRepository;
+    @Autowired
+    private ProductSizeRepository productSizeRepository;
 
     public Product findOne(Long id) {
         Optional<Product> result = productRepository.findById(id);
@@ -67,6 +70,8 @@ public class ProductService extends BaseService {
             }
             productSize.setProduct(result);
             if (!isEdit) {
+                while (productSizeRepository.existsByCode(finalGroup.getFromCode()))
+                    finalGroup.setFromCode(finalGroup.getFromCode()+1);
                 productSize.setCode(finalGroup.getFromCode());
                 finalGroup.setFromCode(finalGroup.getFromCode() + 1);
             }

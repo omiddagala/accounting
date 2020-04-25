@@ -26,4 +26,6 @@ public interface ProductSizeRepository extends CrudRepository<ProductSize,Long> 
     @Query(value = "from ProductSize ps where ( ps.product.reservoir = :reservoir) and (ps.code= :code)")
     ProductSize findByReservoir(@Param("reservoir") Reservoir reservoir, @Param("code") Long code);
 
+    boolean existsByCode(Long code);
+
 }
