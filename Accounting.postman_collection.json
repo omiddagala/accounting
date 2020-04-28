@@ -6,6 +6,1191 @@
 	},
 	"item": [
 		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Customer - Fetch All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":11,\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/customer/list",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"customer",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer - Fetch Unpaid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"ali\",\n    \"family\": \"ba\",\n    \"nationalCode\": \"0\",\n    \"mobile\": \"0\",\n    \"addDate\": \"2020-04-10\",\n    \"paidDate\": \"2020-04-1\",\n    \"status\": \"UNPAID\",\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 2,\n        \"direction\": \"desc\",\n        \"sortBy\": \"id\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/customer/unpaidList",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"customer",
+								"unpaidList"
+							]
+						},
+						"description": "to update entity send \"id\""
+					},
+					"response": []
+				},
+				{
+					"name": "Customer - Fetch Factor Numbers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 11\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/customer/factorNumber",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"customer",
+								"factorNumber"
+							]
+						},
+						"description": "to update entity send \"id\""
+					},
+					"response": []
+				},
+				{
+					"name": "Customer - Save",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"alireza\",\n\t\"family\":\"azadbakht\",\n    \"nationalCode\": \"900\",\n    \"mobile\": \"1000008\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/customer/save",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"customer",
+								"save"
+							]
+						},
+						"description": "to update entity send \"id\""
+					},
+					"response": []
+				},
+				{
+					"name": "Customer - Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/customer/delete",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"customer",
+								"delete"
+							]
+						},
+						"description": "to update entity send \"id\""
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Sales",
+			"item": [
+				{
+					"name": "Sales - Fetch All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer\": {\n        \"id\": \"11\"\n    },\n    \"addDate\": \"2020-04-10\",\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/sales/list",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"sales",
+								"list"
+							]
+						},
+						"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
+					},
+					"response": []
+				},
+				{
+					"name": "Sales  - Save",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer\": {\r\n        \"id\":11\r\n    },\r\n    \"productCode\": 106,\r\n    \"amount\": \"101\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/sales/save",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"sales",
+								"save"
+							]
+						},
+						"description": "to update entity send \"id\"\n\nStatus : PAID, UNPAID"
+					},
+					"response": []
+				},
+				{
+					"name": "Sales  - Save (Update)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 61,\r\n    \"customer\": {\r\n        \"id\": 11,\r\n        \"mobile\": null,\r\n        \"nationalCode\": null,\r\n        \"name\": null,\r\n        \"family\": null\r\n    },\r\n    \"user\": {\r\n        \"id\": 1,\r\n        \"username\": \"admin\",\r\n        \"password\": \"$2a$10$Fpg4hKpBwSIM5mssdDGN7ekdwuagaYI3hKfmeyLWyDoqGiaiA09.W\",\r\n        \"plain\": \"123456\",\r\n        \"role\": \"ROLE_ADXXMIN\",\r\n        \"name\": \"alirezaشش\",\r\n        \"family\": \"azadbakht\",\r\n        \"mobile\": \"1\",\r\n        \"reservoir\": {\r\n            \"id\": 1,\r\n            \"name\": \"b\",\r\n            \"address\": \"a\"\r\n        },\r\n        \r\n        \"accountNonLocked\": true,\r\n        \"accountNonExpired\": true,\r\n        \"credentialsNonExpired\": true\r\n    },\r\n    \"productSize\": {\r\n        \"id\": 1,\r\n        \"product\": {\r\n            \"id\": 1,\r\n            \"name\": \"al\",\r\n            \"description\": \"خوبه\",\r\n            \"type\": \"a\",\r\n            \"image\": \"dsfsf\",\r\n            \"expireDate\": null,\r\n            \"price\": 1010010,\r\n            \"buyPrice\": 1000,\r\n            \"reservoir\": {\r\n                \"id\": 1,\r\n                \"name\": \"b\",\r\n                \"address\": \"a\"\r\n            },\r\n            \"group\": {\r\n                \"id\": 1,\r\n                \"name\": \"as\",\r\n                \"username\": \"admin\",\r\n                \"fromCode\": 100,\r\n                \"toCode\": 100\r\n            },\r\n            \"productSizes\": null\r\n        },\r\n        \"size\": {\r\n            \"id\": 1,\r\n            \"value\": \"1\"\r\n        },\r\n        \"count\": 35,\r\n        \"code\": 1000\r\n    },\r\n    \"price\": 1010010,\r\n    \"amount\": 5,\r\n    \"status\": \"UNPAID\",\r\n    \"productCode\": 1000,\r\n    \"addDateTime\": \"2020-04-12T15:54:02.781\",\r\n    \"addDate\": \"2020-04-12\",\r\n    \"paidDateTime\": null,\r\n    \"paidDate\": null,\r\n    \"factorNumber\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/sales/save",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"sales",
+								"save"
+							]
+						},
+						"description": "to update entity send \"id\"\n\nStatus : PAID, UNPAID"
+					},
+					"response": []
+				},
+				{
+					"name": "Sales  - Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 47\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/sales/delete",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"sales",
+								"delete"
+							]
+						},
+						"description": "to update entity send \"id\""
+					},
+					"response": []
+				},
+				{
+					"name": "Sales  - Finalize Sales",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ids\": [\n       48,36\n    ],\n    \"bankAccount\": {\n        \"id\": 62,\n        \"bank\": \"meli\",\n        \"accountNumber\": \"6037123412341234\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/sales/finalize",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"sales",
+								"finalize"
+							]
+						},
+						"description": "to update entity send \"id\"\n\nStatus : PAID, UNPAID"
+					},
+					"response": []
+				},
+				{
+					"name": "Sales - Report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"from\": \"2020-04-12\",\n\t\"to\": \"2020-04-30\",\n\n\t\"customer\":{\n\t\t\"id\":38\n\t},\n\t\"factortNumber\":176,\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/sales/report",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"sales",
+								"report"
+							]
+						},
+						"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Bank Account",
+			"item": [
+				{
+					"name": "Bank Account - Fetch All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":62,\n\t\"bank\":\"m\",\n\t\"accountNumber\":\"6\",\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/bank/list",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"bank",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bank Account - Save",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"bank\":\"maskan\",\n\t\"accountNumber\":\"6037123412341234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/bank/save",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"bank",
+								"save"
+							]
+						},
+						"description": "to update entity send \"id\""
+					},
+					"response": []
+				},
+				{
+					"name": "Bank Account - Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 64\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/bank/delete",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"bank",
+								"delete"
+							]
+						},
+						"description": "to update entity send \"id\""
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Product Size",
+			"item": [
+				{
+					"name": "Product Size - Find By Code",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "100",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/product/findByCode",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"product",
+								"findByCode"
+							]
+						},
+						"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
+					},
+					"response": []
+				},
+				{
+					"name": "Product Size - save",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n    \"name\": \"b8\",\n    \"description\": \"bbb\",\n    \"type\": \"a\",\n    \"image\": \"dsfsf\",\n    \"expireDate\": null,\n    \"price\": 10100100000000,\n    \"buyPrice\": 1000,\n     \"productSizes\":[\n     \t{\n     \t\t\"size\":{\n     \t\t\t\"id\":83\n     \t\t},\n     \t\t\"count\":100\n     \t}\n     \t],\n    \"group\": {\n        \"id\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/product/save",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"product",
+								"save"
+							]
+						},
+						"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
+					},
+					"response": []
+				},
+				{
+					"name": "Product Size - Fetch All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/product/list",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"product",
+								"list"
+							]
+						},
+						"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Order - Fetch All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/order/fetch",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"order",
+								"fetch"
+							]
+						},
+						"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Size",
+			"item": [
+				{
+					"name": "Size - Fetch All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/size/list",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"size",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Size - Save",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8d57d4f7-d284-471a-b9c1-9aca62d860ab",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"value\":\"M\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/size/save",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"size",
+								"save"
+							]
+						},
+						"description": "to update entity send \"id\""
+					},
+					"response": []
+				},
+				{
+					"name": "Size - Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a16df295-8a9b-4238-91db-4af1cfb67619",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 95\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/v1/shop/size/delete",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"v1",
+								"shop",
+								"size",
+								"delete"
+							]
+						},
+						"description": "to update entity send \"id\""
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
 			"name": "Oauth login",
 			"request": {
 				"method": "POST",
@@ -77,988 +1262,6 @@
 						"token"
 					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Customer - Fetch All",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"id\":11,\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/customer/list",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"customer",
-						"list"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Customer - Fetch Unpaid",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"ali\",\n    \"family\": \"ba\",\n    \"nationalCode\": \"0\",\n    \"mobile\": \"0\",\n    \"addDate\": \"2020-04-10\",\n    \"paidDate\": \"2020-04-1\",\n    \"status\": \"UNPAID\",\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 2,\n        \"direction\": \"desc\",\n        \"sortBy\": \"id\"\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/customer/unpaidList",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"customer",
-						"unpaidList"
-					]
-				},
-				"description": "to update entity send \"id\""
-			},
-			"response": []
-		},
-		{
-			"name": "Customer - Fetch Factor Numbers",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"id\": 11\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/customer/factorNumber",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"customer",
-						"factorNumber"
-					]
-				},
-				"description": "to update entity send \"id\""
-			},
-			"response": []
-		},
-		{
-			"name": "Customer - Save",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\":\"alireza\",\n\t\"family\":\"azadbakht\",\n    \"nationalCode\": \"900\",\n    \"mobile\": \"1000008\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/customer/save",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"customer",
-						"save"
-					]
-				},
-				"description": "to update entity send \"id\""
-			},
-			"response": []
-		},
-		{
-			"name": "Customer - Delete",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"id\": 3\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/customer/delete",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"customer",
-						"delete"
-					]
-				},
-				"description": "to update entity send \"id\""
-			},
-			"response": []
-		},
-		{
-			"name": "Sales - Fetch All",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"customer\": {\n        \"id\": \"11\"\n    },\n    \"addDate\": \"2020-04-10\",\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/sales/list",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"sales",
-						"list"
-					]
-				},
-				"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
-			},
-			"response": []
-		},
-		{
-			"name": "Sales  - Save",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"customer\": {\r\n        \"id\":11\r\n    },\r\n    \"productCode\": 1000,\r\n    \"amount\": \"500\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/sales/save",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"sales",
-						"save"
-					]
-				},
-				"description": "to update entity send \"id\"\n\nStatus : PAID, UNPAID"
-			},
-			"response": []
-		},
-		{
-			"name": "Sales  - Save (Update)",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\": 61,\r\n    \"customer\": {\r\n        \"id\": 11,\r\n        \"mobile\": null,\r\n        \"nationalCode\": null,\r\n        \"name\": null,\r\n        \"family\": null\r\n    },\r\n    \"user\": {\r\n        \"id\": 1,\r\n        \"username\": \"admin\",\r\n        \"password\": \"$2a$10$Fpg4hKpBwSIM5mssdDGN7ekdwuagaYI3hKfmeyLWyDoqGiaiA09.W\",\r\n        \"plain\": \"123456\",\r\n        \"role\": \"ROLE_ADXXMIN\",\r\n        \"name\": \"alirezaشش\",\r\n        \"family\": \"azadbakht\",\r\n        \"mobile\": \"1\",\r\n        \"reservoir\": {\r\n            \"id\": 1,\r\n            \"name\": \"b\",\r\n            \"address\": \"a\"\r\n        },\r\n        \r\n        \"accountNonLocked\": true,\r\n        \"accountNonExpired\": true,\r\n        \"credentialsNonExpired\": true\r\n    },\r\n    \"productSize\": {\r\n        \"id\": 1,\r\n        \"product\": {\r\n            \"id\": 1,\r\n            \"name\": \"al\",\r\n            \"description\": \"خوبه\",\r\n            \"type\": \"a\",\r\n            \"image\": \"dsfsf\",\r\n            \"expireDate\": null,\r\n            \"price\": 1010010,\r\n            \"buyPrice\": 1000,\r\n            \"reservoir\": {\r\n                \"id\": 1,\r\n                \"name\": \"b\",\r\n                \"address\": \"a\"\r\n            },\r\n            \"group\": {\r\n                \"id\": 1,\r\n                \"name\": \"as\",\r\n                \"username\": \"admin\",\r\n                \"fromCode\": 100,\r\n                \"toCode\": 100\r\n            },\r\n            \"productSizes\": null\r\n        },\r\n        \"size\": {\r\n            \"id\": 1,\r\n            \"value\": \"1\"\r\n        },\r\n        \"count\": 35,\r\n        \"code\": 1000\r\n    },\r\n    \"price\": 1010010,\r\n    \"amount\": 5,\r\n    \"status\": \"UNPAID\",\r\n    \"productCode\": 1000,\r\n    \"addDateTime\": \"2020-04-12T15:54:02.781\",\r\n    \"addDate\": \"2020-04-12\",\r\n    \"paidDateTime\": null,\r\n    \"paidDate\": null,\r\n    \"factorNumber\": null\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/sales/save",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"sales",
-						"save"
-					]
-				},
-				"description": "to update entity send \"id\"\n\nStatus : PAID, UNPAID"
-			},
-			"response": []
-		},
-		{
-			"name": "Sales  - Delete",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"id\": 47\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/sales/delete",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"sales",
-						"delete"
-					]
-				},
-				"description": "to update entity send \"id\""
-			},
-			"response": []
-		},
-		{
-			"name": "Sales  - Finalize Sales",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"ids\": [\n       48,36\n    ],\n    \"bankAccount\": {\n        \"id\": 62,\n        \"bank\": \"meli\",\n        \"accountNumber\": \"6037123412341234\"\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/sales/finalize",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"sales",
-						"finalize"
-					]
-				},
-				"description": "to update entity send \"id\"\n\nStatus : PAID, UNPAID"
-			},
-			"response": []
-		},
-		{
-			"name": "Sales - Report",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"from\": \"2020-04-12\",\n\t\"to\": \"2020-04-15\",\n\t\"user\":{\n\t\t\"id\":1\n\t},\n\t\"customer\":{\n\t\t\"id\":11\n\t},\n\t\"productSize\":{\n\t\t\"id\":1\n\t},\n\t\"bankAccount\":{\n\t\t\"id\":62\n\t},\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/sales/report",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"sales",
-						"report"
-					]
-				},
-				"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
-			},
-			"response": []
-		},
-		{
-			"name": "Bank Account - Fetch All",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"id\":62,\n\t\"bank\":\"m\",\n\t\"accountNumber\":\"6\",\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/bank/list",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"bank",
-						"list"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Bank Account - Save",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"bank\":\"maskan\",\n\t\"accountNumber\":\"6037123412341234\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/bank/save",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"bank",
-						"save"
-					]
-				},
-				"description": "to update entity send \"id\""
-			},
-			"response": []
-		},
-		{
-			"name": "Bank Account - Delete",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "6d088195-6d2f-4ab3-b824-10b8348b240d",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"id\": 64\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/bank/delete",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"bank",
-						"delete"
-					]
-				},
-				"description": "to update entity send \"id\""
-			},
-			"response": []
-		},
-		{
-			"name": "Product Size - Find By Code",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "100",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/product/findByCode",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"product",
-						"findByCode"
-					]
-				},
-				"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
-			},
-			"response": []
-		},
-		{
-			"name": "Product Size - save",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\":\"AAA\",\n\t\"description\":\"bbb\",\n\t\"group\":{\n\t\t\"id\":1\n\t},\n\t\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/product/save",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"product",
-						"save"
-					]
-				},
-				"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
-			},
-			"response": []
-		},
-		{
-			"name": "Product Size - Fetch All",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"pageableDTO\": {\n        \"page\": 0,\n        \"size\": 10,\n        \"direction\": \"ASC\",\n        \"sortBy\": \"id\"\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/product/list",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"product",
-						"list"
-					]
-				},
-				"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
-			},
-			"response": []
-		},
-		{
-			"name": "Order - Fetch All",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJuYW1lIjpudWxsLCJmYW1pbHkiOm51bGwsIm1vYmlsZSI6bnVsbCwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjpbXSwicmVzZXJ2b2lyIjpudWxsfSwidXNlcl9uYW1lIjoiYWRtaW4iLCJqdGkiOiI5NjMxNjJlNy1mYTQzLTQ0NzAtOTRmMy0yNWMwZjg0YWQ5NmUiLCJjbGllbnRfaWQiOiJlbmdfYXBwIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.eXqnnVXqKmuimXM7oMgj2EjGwZv_-KJjv9-h5yrIEJ0",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:9000/v1/shop/order/fetch",
-					"host": [
-						"localhost"
-					],
-					"port": "9000",
-					"path": [
-						"v1",
-						"shop",
-						"order",
-						"fetch"
-					]
-				},
-				"description": "can sort records based odn:\r\nfinishedDate , inCartDate"
 			},
 			"response": []
 		}

@@ -15,6 +15,7 @@ public class ReportDTO {
     private LocalDate from;
     private LocalDate to;
     private BankAccount bankAccount;
+    private Long factorNumber;
     private PageableDTO pageableDTO;
 
     public User getUser() {
@@ -71,5 +72,13 @@ public class ReportDTO {
 
     public void setPageableDTO(PageableDTO pageableDTO) {
         this.pageableDTO = pageableDTO;
+    }
+
+    public Long getFactorNumber() {
+        return factorNumber;
+    }
+
+    public void setFactorNumber(Long factorNumber) {
+        this.factorNumber = factorNumber;
     }
 }

@@ -39,10 +39,10 @@ public class SalesService extends BaseService {
 
     public Sales saveOrUpdate(Sales sales) {
         if (sales.getId() == null) {
-            ProductSize productSize = productSizeRepository.findByReservoirAndCode(userRepository.findByUsername(getLoggedInUsername()).getReservoir(),sales.getProductCode());
+            ProductSize productSize = productSizeRepository.findByReservoirAndCode(userRepository.findByUsername(getLoggedInUsername()).getReservoir(), sales.getProductCode());
             // #TODO search with id (wrong print)
-            if(productSize==null)
-                productSize = productSizeRepository.findByReservoirAndId(userRepository.findByUsername(getLoggedInUsername()).getReservoir(),sales.getProductCode());
+            if (productSize == null)
+                productSize = productSizeRepository.findByReservoirAndId(userRepository.findByUsername(getLoggedInUsername()).getReservoir(), sales.getProductCode());
             if (productSize.getCount() < sales.getAmount())
                 throw new RuntimeException("productCountOutOfRage");
             productSize.setCount(productSize.getCount() - sales.getAmount());
@@ -81,9 +81,9 @@ public class SalesService extends BaseService {
     public ReportResultDTO report(ReportDTO dto) {
         ReportResultDTO result = new ReportResultDTO();
         if (dto.getFrom() == null)
-            dto.setFrom( LocalDate.of(1, 1, 1));
-        result.setSales(salesRepository.report(dto.getCustomer(), dto.getUser(), dto.getProductSize(), Status.PAID, dto.getFrom(), dto.getTo(), dto.getBankAccount(), getPageable(dto.getPageableDTO())));
-        result.setTotal(salesRepository.reportSum(dto.getCustomer(), dto.getUser(), dto.getProductSize(), Status.PAID, dto.getFrom(), dto.getTo(), dto.getBankAccount()));
+            dto.setFrom(LocalDate.of(1, 1, 1));
+        result.setSales(salesRepository.report(dto.getCustomer(), dto.getUser(), dto.getProductSize(), Status.PAID, dto.getFrom(), dto.getTo(), dto.getBankAccount(), dto.getFactorNumber(), getPageable(dto.getPageableDTO())));
+        result.setTotal(salesRepository.reportSum(dto.getCustomer(), dto.getUser(), dto.getProductSize(), Status.PAID, dto.getFrom(), dto.getTo(), dto.getBankAccount(), dto.getFactorNumber()));
         return result;
     }
 
