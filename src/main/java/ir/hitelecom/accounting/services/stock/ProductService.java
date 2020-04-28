@@ -119,7 +119,11 @@ public class ProductService extends BaseService {
     }
 
     public ProductSize findByCode(Long id) {
-        ProductSize productSize = productSizeService.findByCode(id);
+        //ProductSize productSize = productSizeService.findByCode(id);
+        ProductSize productSize = productSizeRepository.findByReservoirAndCode(userRepository.findByUsername(getLoggedInUsername()).getReservoir(),id);
+        // #TODO search with id (wrong print)
+        if(productSize==null)
+            productSize = productSizeRepository.findByReservoirAndId(userRepository.findByUsername(getLoggedInUsername()).getReservoir(),id);
         if (productSize == null)
             throw new NullPointerException("productNotFound");
         return productSize;

@@ -77,8 +77,8 @@ public class OrderService extends BaseService {
                             newProductSize.setCount((ord.getValue() != null && !"".equals(ord.getValue()) ? Integer.valueOf(ord.getValue()) : 0));
                             newProductSize.setProduct(savedProduct);
                             newProductSize.setSize(source.getSize());
-                            newProductSize.setCode(group.getFromCode());
-                            group.setFromCode(group.getFromCode() + 1);
+                            newProductSize.setCode(source.getCode());
+//                            group.setFromCode(group.getFromCode() + 1);
                             productSizeRepository.save(newProductSize);
                         }
                     } else {
@@ -92,13 +92,13 @@ public class OrderService extends BaseService {
                         if (group.getFromCode() == null) {
                             group.setFromCode(0L);
                         }
-                        newProductSize.setCode(group.getFromCode());
-                        group.setFromCode(group.getFromCode() + 1);
+                        newProductSize.setCode(source.getCode());
+//                        group.setFromCode(group.getFromCode() + 1);
                         productSizeRepository.save(newProductSize);
                     }
 
                 } else {
-                    destination.setCount(new Long(destination.getCount() == null ? 0 : destination.getCount() +  (ord.getValue() != null && !"".equals(ord.getValue()) ? Long.valueOf(ord.getValue()) : 0)).intValue());
+                    destination.setCount(new Long(destination.getCount() == null ? 0 : destination.getCount() + (ord.getValue() != null && !"".equals(ord.getValue()) ? Long.valueOf(ord.getValue()) : 0)).intValue());
                 }
             });
             orderRepository.delete(fetchedOrder);
