@@ -23,7 +23,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
     @ExceptionHandler(value = RuntimeException.class)
     protected ResponseEntity<Object> handleBusinessException(RuntimeException exception, WebRequest request) {
-        List<String> exceptions = Arrays.asList("productCountOutOfRage");
+        List<String> exceptions = Arrays.asList("productCountOutOfRage","orderZeroException");
         if (exceptions.contains(exception.getMessage()))
             return handleExceptionInternal(exception, getErrorMessage(exception.getMessage()), new HttpHeaders(), HttpStatus.UNPROCESSABLE_ENTITY, request);
         else if (exception.getCause().getCause().toString().contains("Detail: Key (mobile)=("))

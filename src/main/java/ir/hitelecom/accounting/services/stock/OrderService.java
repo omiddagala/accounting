@@ -38,6 +38,8 @@ public class OrderService extends BaseService {
         User user = userRepository.findByUsername(getLoggedInUsername());
         order.setSubmitter(user);
         order.setSubmitDate(new Date());
+        if(order.getOrders().equals("[]"))
+            throw new RuntimeException("orderZeroException");
         orderRepository.save(order);
     }
 
