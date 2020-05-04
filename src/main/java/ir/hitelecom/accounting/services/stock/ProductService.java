@@ -15,7 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -71,7 +73,7 @@ public class ProductService extends BaseService {
             productSize.setProduct(result);
             if (!isEdit) {
                 while (productSizeRepository.existsByCode(finalGroup.getFromCode()))
-                    finalGroup.setFromCode(finalGroup.getFromCode()+1);
+                    finalGroup.setFromCode(finalGroup.getFromCode() + 1);
                 productSize.setCode(finalGroup.getFromCode());
                 finalGroup.setFromCode(finalGroup.getFromCode() + 1);
             }
@@ -103,27 +105,14 @@ public class ProductService extends BaseService {
     }
 
     public List<ProductSize> search(ProductSize dto) {
-        Map<Long, ProductSize> result = new HashMap<>();
-        ProductSize o = productSizeService.findByCode(dto.getId());
-        if (o == null) {
-            o = productSizeService.findById(dto.getId());
-        }
-        if (o != null) {
-            ProductSize p = o;
-            List<ProductSize> fetched = productSizeService.findProductByProductNameAndProductOwner(p.getProduct().getName(), p.getProduct().getOwner());
-            fetched.forEach(f -> {
-                result.putIfAbsent(f.getProduct().getId(), f);
-            });
-        }
-        return new ArrayList<>(result.values());
+        return productSizeRepository.searchNotReservoirAndCodeAndAvailable(userRepository.findByUsername(getLoggedInUsername()).getReservoir(), dto.getId());
     }
 
     public ProductSize findByCode(Long id) {
-        //ProductSize productSize = productSizeService.findByCode(id);
-        ProductSize productSize = productSizeRepository.findByReservoirAndCode(userRepository.findByUsername(getLoggedInUsername()).getReservoir(),id);
+        ProductSize productSize = productSizeRepository.findByReservoirAndCode(userRepository.findByUsername(getLoggedInUsername()).getReservoir(), id);
         // #TODO search with id (wrong print)
-        if(productSize==null)
-            productSize = productSizeRepository.findByReservoirAndId(userRepository.findByUsername(getLoggedInUsername()).getReservoir(),id);
+        if (productSize == null)
+            productSize = productSizeRepository.findByReservoirAndId(userRepository.findByUsername(getLoggedInUsername()).getReservoir(), id);
         if (productSize == null)
             throw new NullPointerException("productNotFound");
         return productSize;
