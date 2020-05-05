@@ -91,17 +91,9 @@ public class ProductService extends BaseService {
                 return productRepository.searchForOrder(product.getName(), product.getType(), user.getParent(), getPageable(product.getPageableDTO()));
             }
         } else {
-            List<ProductSize> byCode = productSizeRepository.findByCode(product.getId());
+            ProductSize productSize = findByCode(product.getId());
             List<Product> result = new ArrayList<>();
-            if(byCode.get(0)!=null) {
-                result.add(byCode.get(0).getProduct());
-            }
-            else{
-            // #TODO search with id (wrong print)
-                Optional<ProductSize> byId = productSizeRepository.findById(product.getId());
-                if (byId.isPresent())
-                    result.add(byId.get().getProduct());
-            }
+            result.add(productSize.getProduct());
             return result;
         }
     }
