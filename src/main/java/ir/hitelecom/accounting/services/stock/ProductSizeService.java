@@ -55,10 +55,6 @@ public class ProductSizeService extends BaseService {
         productSizeRepository.save(productSize);
     }
 
-    public ProductSize findByCode(Long id) {
-        return productSizeRepository.findByCode(id);
-    }
-
     public ProductSize findById(Long id) {
         Optional<ProductSize> o = productSizeRepository.findById(id);
         return o.orElse(null);

@@ -91,9 +91,17 @@ public class ProductService extends BaseService {
                 return productRepository.searchForOrder(product.getName(), product.getType(), user.getParent(), getPageable(product.getPageableDTO()));
             }
         } else {
-            ProductSize productSize = productSizeService.findByCode(product.getId());
-            List<Product> result = new ArrayList<Product>();
-            result.add(productSize.getProduct());
+            List<ProductSize> byCode = productSizeRepository.findByCode(product.getId());
+            List<Product> result = new ArrayList<>();
+            if(byCode.get(0)!=null) {
+                result.add(byCode.get(0).getProduct());
+            }
+            else{
+            // #TODO search with id (wrong print)
+                Optional<ProductSize> byId = productSizeRepository.findById(product.getId());
+                if (byId.isPresent())
+                    result.add(byId.get().getProduct());
+            }
             return result;
         }
     }
@@ -105,7 +113,7 @@ public class ProductService extends BaseService {
     }
 
     public List<ProductSize> search(ProductSize dto) {
-        return productSizeRepository.searchNotReservoirAndCodeAndAvailable(userRepository.findByUsername(getLoggedInUsername()).getReservoir(), dto.getId());
+        return productSizeRepository.findByCode(dto.getId());
     }
 
     public ProductSize findByCode(Long id) {

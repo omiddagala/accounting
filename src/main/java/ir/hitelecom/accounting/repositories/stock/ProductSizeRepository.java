@@ -21,16 +21,13 @@ public interface ProductSizeRepository extends CrudRepository<ProductSize,Long> 
 
     List<ProductSize> findProductByProductNameAndProductOwner(String name, User owner);
 
-    ProductSize findByCode(Long code);
+    List<ProductSize> findByCode(Long code);
 
     @Query(value = "from ProductSize ps where ( ps.product.reservoir = :reservoir) and (ps.code= :code)")
     ProductSize findByReservoirAndCode(@Param("reservoir") Reservoir reservoir, @Param("code") Long code);
 
     @Query(value = "from ProductSize ps where ( ps.product.reservoir = :reservoir) and (ps.id= :id)")
     ProductSize findByReservoirAndId(@Param("reservoir") Reservoir reservoir, @Param("id") Long id);
-
-    @Query(value = "from ProductSize ps where ( ps.product.reservoir <> :reservoir) and (ps.code= :code) and (ps.count>0)")
-    List<ProductSize> searchNotReservoirAndCodeAndAvailable(@Param("reservoir") Reservoir reservoir, @Param("code") Long code);
 
     boolean existsByCode(Long code);
 
