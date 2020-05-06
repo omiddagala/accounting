@@ -5,19 +5,15 @@ import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.stock.Group;
 import ir.hitelecom.accounting.entities.stock.Product;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
+import ir.hitelecom.accounting.entities.stock.Reservoir;
 import ir.hitelecom.accounting.repositories.UserRepository;
-import ir.hitelecom.accounting.repositories.stock.GroupRepository;
-import ir.hitelecom.accounting.repositories.stock.ProductRepository;
-import ir.hitelecom.accounting.repositories.stock.ProductSizeRepository;
-import ir.hitelecom.accounting.repositories.stock.TimelineRepository;
+import ir.hitelecom.accounting.repositories.stock.*;
 import ir.hitelecom.accounting.services.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional
@@ -35,6 +31,8 @@ public class ProductService extends BaseService {
     private GroupRepository groupRepository;
     @Autowired
     private ProductSizeRepository productSizeRepository;
+    @Autowired
+    private ReservoirRepository reservoirRepository;
 
     public Product findOne(Long id) {
         Optional<Product> result = productRepository.findById(id);
@@ -105,7 +103,26 @@ public class ProductService extends BaseService {
     }
 
     public List<ProductSize> search(ProductSize dto) {
-        return productSizeRepository.findByCode(dto.getId());
+        Set<Long> codes = new HashSet<>();
+        Iterable<Reservoir> reservoirs = reservoirRepository.findAll();
+        for (Reservoir reservoir : reservoirs) {
+            try {
+                ProductSize productSize = productSizeRepository.findByReservoirAndCode(reservoir, dto.getId());
+                List<ProductSize> sizes = productSizeService.getSizes(productSize.getProduct().getId());
+                for (ProductSize ps : sizes)
+                    codes.add(ps.getCode());
+            } catch (Exception e) {
+            }
+        }
+        List<Product> products = productSizeRepository.searchAllReservoir(codes);
+        List<ProductSize> result = new ArrayList<>();
+        for (Product product : products) {
+            ProductSize temp = new ProductSize();
+            temp.setId(product.getId());
+            temp.setProduct(product);
+            result.add(temp);
+        }
+        return result;
     }
 
     public ProductSize findByCode(Long id) {

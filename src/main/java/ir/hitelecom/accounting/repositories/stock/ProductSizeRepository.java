@@ -9,8 +9,9 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Set;
 
-public interface ProductSizeRepository extends CrudRepository<ProductSize,Long> {
+public interface ProductSizeRepository extends CrudRepository<ProductSize, Long> {
 
     @Query(value = "select s.id , s.value, ps.count, ps.id as psid, re.name, pr.id as prid, re.id as reid, ps.code from sizes as s left join product_size as ps on ps.size_id = s.id and ps.product_id = :productId join product as pr on ps.product_id = pr.id join reservoir re on pr.reservoir_id = re.id", nativeQuery = true)
     List<Object[]> getSizes(@Param("productId") Long productId);
@@ -21,14 +22,14 @@ public interface ProductSizeRepository extends CrudRepository<ProductSize,Long> 
 
     List<ProductSize> findProductByProductNameAndProductOwner(String name, User owner);
 
-    List<ProductSize> findByCode(Long code);
-
     @Query(value = "from ProductSize ps where ( ps.product.reservoir = :reservoir) and (ps.code= :code)")
     ProductSize findByReservoirAndCode(@Param("reservoir") Reservoir reservoir, @Param("code") Long code);
 
     @Query(value = "from ProductSize ps where ( ps.product.reservoir = :reservoir) and (ps.id= :id)")
     ProductSize findByReservoirAndId(@Param("reservoir") Reservoir reservoir, @Param("id") Long id);
 
-    boolean existsByCode(Long code);
+    @Query(value = "select distinct ps.product from ProductSize ps where ps.code in (:codes) ")
+    List<Product> searchAllReservoir(@Param("codes") Set<Long> codes);
 
+    boolean existsByCode(Long code);
 }
