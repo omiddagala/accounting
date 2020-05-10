@@ -19,7 +19,7 @@ public class BankAccountService extends BaseService {
 
     public List<BankAccount> fetchAll(BankAccountListDTO dto){
         if (dto.getId() == null)
-            return bankAccountRepository.search(dto.getBank(), dto.getAccountNumber(), getPageable(dto.getPageableDTO()));
+            return bankAccountRepository.search(dto.getBank(), dto.getAccountNumber());
         else {
             List<BankAccount> byId = bankAccountRepository.findAllById(dto.getId());
             if(byId.isEmpty())
