@@ -4,6 +4,7 @@ import ir.hitelecom.accounting.entities.User;
 import ir.hitelecom.accounting.entities.stock.Product;
 import ir.hitelecom.accounting.entities.stock.ProductSize;
 import ir.hitelecom.accounting.entities.stock.Reservoir;
+import ir.hitelecom.accounting.entities.stock.Size;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -17,6 +18,8 @@ public interface ProductSizeRepository extends CrudRepository<ProductSize, Long>
     List<Object[]> getSizes(@Param("productId") Long productId);
 
     void deleteByProduct(Product product);
+
+    void deleteBySize(Size size);
 
     ProductSize findByProductReservoirAndProductNameAndSizeId(Reservoir reservoir, String name, Long id);
 

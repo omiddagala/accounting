@@ -45,6 +45,7 @@ public class SizeService extends BaseService {
     }
 
     public void delete(Size size) {
+        productSizeRepository.deleteBySize(size);
         sizeRepository.delete(size);
     }
 }
