@@ -38,7 +38,7 @@ public class OrderService extends BaseService {
         User user = userRepository.findByUsername(getLoggedInUsername());
         order.setSubmitter(user);
         order.setSubmitDate(new Date());
-        if(order.getOrders().equals("[]"))
+        if (order.getOrders().equals("[]"))
             throw new RuntimeException("orderZeroException");
         orderRepository.save(order);
     }
@@ -85,6 +85,11 @@ public class OrderService extends BaseService {
                         }
                     } else {
                         destinationProduct.setReservoir(fetchedOrder.getDestination());
+                        Optional<Product> op = productRepository.findById(fetchedOrder.getProduct().getId());
+                        if (op.isPresent()) {
+                            destinationProduct.setPrice(op.get().getPrice());
+                            destinationProduct.setBuyPrice(op.get().getBuyPrice());
+                        }
                         ProductSize newProductSize = new ProductSize();
                         newProductSize.setCount((ord.getValue() != null && !"".equals(ord.getValue()) ? Integer.valueOf(ord.getValue()) : 0));
                         newProductSize.setProduct(destinationProduct);
